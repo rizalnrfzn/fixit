@@ -1,0 +1,23 @@
+{
+  "canceled": false,
+  "checkingCost": 5000,
+  "clientAddress": "Mewek",
+  "clientLocation": { "lat": -7.4453228, "lng": 109.2662425 },
+  "clientUid": "yhlObRZToLQhfJoJzv1Aykcy7B93",
+  "damage": [],
+  "dateTime": "2024-01-08T09:29:40.315149",
+  "distance": 39483,
+  "duration": 92738,
+  "electronic": "Televisi",
+  "electronicPicture": [],
+  "gripe": ["keluhan televisi 1"],
+  "id": "bVCfX1rzV0bucLNFrQ4X",
+  "pay": false,
+  "repair": false,
+  "repairCost": 50000,
+  "route": [],
+  "status": "onlie",
+  "technicianLocation": { "lat": -7.4453228, "lat": 109.2662425 },
+  "technicianUid": "oR0HYrPbTfZMeKIRZjHw",
+  "totalCost": 55000
+}

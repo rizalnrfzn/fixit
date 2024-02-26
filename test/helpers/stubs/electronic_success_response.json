@@ -1,0 +1,8 @@
+{
+  "description": "ini AC",
+  "englishName": "Air Conditioner",
+  "gripe": ["keluhan ac 1", "keluhan ac 2"],
+  "id": "12UtbGEah9DXFNr9l1vv",
+  "image": "https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/electronic%2Fac.png?alt=media&token=e24d8a17-c93b-4eeb-b496-3c9d2ea30002",
+  "name": "Air Conditioner"
+}
