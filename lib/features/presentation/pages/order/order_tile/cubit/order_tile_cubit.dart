@@ -34,7 +34,7 @@ class OrderTileCubit extends Cubit<OrderTileState> {
     );
   }
 
-  Future<void> checkStatus(RepairOrder order) async {
+  Future<void> checkStatus(RepairOrder order, Technician technician) async {
     emit(const _Initial());
     if (order.status == Status.konfirmasiTeknisi.name) {
       index = 0;
@@ -42,7 +42,7 @@ class OrderTileCubit extends Cubit<OrderTileState> {
     } else if (order.status == Status.menungguTeknisi.name) {
       index = 1;
       if (direction == null) {
-        await getDirection(order.clientLocation!, order.technicianLocation!);
+        await getDirection(order.clientLocation!, technician.currentLocation!);
       }
       emit(_Success(index, direction));
     } else if (order.status == Status.pengecekanElektronik.name) {

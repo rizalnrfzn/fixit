@@ -14,26 +14,29 @@ class RecomendationContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: Dimens.space24),
+      padding: EdgeInsets.symmetric(horizontal: Dimens.space16),
       child: Column(
         children: [
-          Row(
-            children: [
-              Text(
-                Strings.of(context)!.recomendation,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(fontWeight: FontWeight.bold),
-              ),
-              const Spacer(),
-              ButtonText(
-                title: Strings.of(context)!.seeAll,
-                onPressed: () {
-                  context.push(Routes.technicianList.path);
-                },
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: Dimens.space8),
+            child: Row(
+              children: [
+                Text(
+                  Strings.of(context)!.recomendation,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
+                ButtonText(
+                  title: Strings.of(context)!.seeAll,
+                  onPressed: () {
+                    context.push(Routes.technicianList.path);
+                  },
+                ),
+              ],
+            ),
           ),
           Column(
             children: List.generate(

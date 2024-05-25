@@ -9,7 +9,6 @@ import '../../../helpers/paths.dart';
 void main() {
   final electronicModel = ElectronicModel(
       description: "ini AC",
-      englishName: "Air Conditioner",
       gripe: ["keluhan ac 1", "keluhan ac 2"],
       id: "12UtbGEah9DXFNr9l1vv",
       image:
@@ -26,11 +25,11 @@ void main() {
     // assert
     expect(result, equals(electronicModel));
   });
+
   test('to json, should return a json map containing proper data', () {
     // arrange
     final expectedJson = {
       "description": "ini AC",
-      "englishName": "Air Conditioner",
       "gripe": ["keluhan ac 1", "keluhan ac 2"],
       "id": "12UtbGEah9DXFNr9l1vv",
       "image":

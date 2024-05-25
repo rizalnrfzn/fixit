@@ -12,7 +12,7 @@ part of 'electronic_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ElectronicModel _$ElectronicModelFromJson(Map<String, dynamic> json) {
   return _ElectronicModel.fromJson(json);
@@ -22,7 +22,6 @@ ElectronicModel _$ElectronicModelFromJson(Map<String, dynamic> json) {
 mixin _$ElectronicModel {
   String? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String? get englishName => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   List<String>? get gripe => throw _privateConstructorUsedError;
@@ -42,7 +41,6 @@ abstract class $ElectronicModelCopyWith<$Res> {
   $Res call(
       {String? id,
       String? name,
-      String? englishName,
       String? description,
       String? image,
       List<String>? gripe});
@@ -63,7 +61,6 @@ class _$ElectronicModelCopyWithImpl<$Res, $Val extends ElectronicModel>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? englishName = freezed,
     Object? description = freezed,
     Object? image = freezed,
     Object? gripe = freezed,
@@ -76,10 +73,6 @@ class _$ElectronicModelCopyWithImpl<$Res, $Val extends ElectronicModel>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      englishName: freezed == englishName
-          ? _value.englishName
-          : englishName // ignore: cast_nullable_to_non_nullable
               as String?,
       description: freezed == description
           ? _value.description
@@ -108,7 +101,6 @@ abstract class _$$ElectronicModelImplCopyWith<$Res>
   $Res call(
       {String? id,
       String? name,
-      String? englishName,
       String? description,
       String? image,
       List<String>? gripe});
@@ -127,7 +119,6 @@ class __$$ElectronicModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? englishName = freezed,
     Object? description = freezed,
     Object? image = freezed,
     Object? gripe = freezed,
@@ -140,10 +131,6 @@ class __$$ElectronicModelImplCopyWithImpl<$Res>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      englishName: freezed == englishName
-          ? _value.englishName
-          : englishName // ignore: cast_nullable_to_non_nullable
               as String?,
       description: freezed == description
           ? _value.description
@@ -167,7 +154,6 @@ class _$ElectronicModelImpl extends _ElectronicModel {
   _$ElectronicModelImpl(
       {this.id,
       this.name,
-      this.englishName,
       this.description,
       this.image,
       final List<String>? gripe})
@@ -181,8 +167,6 @@ class _$ElectronicModelImpl extends _ElectronicModel {
   final String? id;
   @override
   final String? name;
-  @override
-  final String? englishName;
   @override
   final String? description;
   @override
@@ -199,7 +183,7 @@ class _$ElectronicModelImpl extends _ElectronicModel {
 
   @override
   String toString() {
-    return 'ElectronicModel(id: $id, name: $name, englishName: $englishName, description: $description, image: $image, gripe: $gripe)';
+    return 'ElectronicModel(id: $id, name: $name, description: $description, image: $image, gripe: $gripe)';
   }
 
   @override
@@ -209,8 +193,6 @@ class _$ElectronicModelImpl extends _ElectronicModel {
             other is _$ElectronicModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.englishName, englishName) ||
-                other.englishName == englishName) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
@@ -219,8 +201,8 @@ class _$ElectronicModelImpl extends _ElectronicModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, englishName,
-      description, image, const DeepCollectionEquality().hash(_gripe));
+  int get hashCode => Object.hash(runtimeType, id, name, description, image,
+      const DeepCollectionEquality().hash(_gripe));
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +223,6 @@ abstract class _ElectronicModel extends ElectronicModel {
   factory _ElectronicModel(
       {final String? id,
       final String? name,
-      final String? englishName,
       final String? description,
       final String? image,
       final List<String>? gripe}) = _$ElectronicModelImpl;
@@ -254,8 +235,6 @@ abstract class _ElectronicModel extends ElectronicModel {
   String? get id;
   @override
   String? get name;
-  @override
-  String? get englishName;
   @override
   String? get description;
   @override

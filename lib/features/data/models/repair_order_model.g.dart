@@ -19,7 +19,7 @@ _$RepairOrderModelImpl _$$RepairOrderModelImplFromJson(
       clientAddress: json['clientAddress'] as String?,
       duration: (json['duration'] as num?)?.toDouble(),
       distance: (json['distance'] as num?)?.toDouble(),
-      electronic: json['electronic'] as String?,
+      electronicId: json['electronicId'] as String?,
       gripe:
           (json['gripe'] as List<dynamic>?)?.map((e) => e as String).toList(),
       damage:
@@ -30,12 +30,12 @@ _$RepairOrderModelImpl _$$RepairOrderModelImplFromJson(
       checkingCost: json['checkingCost'] as int?,
       repairCost: json['repairCost'] as int?,
       totalCost: json['totalCost'] as int?,
-      dateTime: _$JsonConverterFromJson<String, DateTime>(
-          json['dateTime'], const DateTimeConverter().fromJson),
+      dateTime: _$JsonConverterFromJson<Timestamp, DateTime>(
+          json['dateTime'], const TimestampConverter().fromJson),
       status: json['status'] as String?,
       repair: json['repair'] as bool?,
       pay: json['pay'] as bool?,
-      canceled: json['canceled'] as bool?,
+      cancelled: json['cancelled'] as bool?,
       reasonCancelled: json['reasonCancelled'] as String?,
     );
 
@@ -52,19 +52,19 @@ Map<String, dynamic> _$$RepairOrderModelImplToJson(
       'clientAddress': instance.clientAddress,
       'duration': instance.duration,
       'distance': instance.distance,
-      'electronic': instance.electronic,
+      'electronicId': instance.electronicId,
       'gripe': instance.gripe,
       'damage': instance.damage,
       'electronicPicture': instance.electronicPicture,
       'checkingCost': instance.checkingCost,
       'repairCost': instance.repairCost,
       'totalCost': instance.totalCost,
-      'dateTime': _$JsonConverterToJson<String, DateTime>(
-          instance.dateTime, const DateTimeConverter().toJson),
+      'dateTime': _$JsonConverterToJson<Timestamp, DateTime>(
+          instance.dateTime, const TimestampConverter().toJson),
       'status': instance.status,
       'repair': instance.repair,
       'pay': instance.pay,
-      'canceled': instance.canceled,
+      'cancelled': instance.cancelled,
       'reasonCancelled': instance.reasonCancelled,
     };
 

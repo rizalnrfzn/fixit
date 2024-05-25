@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 enum Routes {
-  root("/"),
+  root('/'),
 
   /// General page
   splashScreen('/splashscreen'),
@@ -101,6 +101,7 @@ class AppRoute {
         if (MainBoxMixin.mainBox?.get(MainBoxKeys.isRegistered.name) as bool? ??
             false) {
           context.read<ElectronicCubit>().streamElectronics();
+          context.read<BannerCubit>().getAllBanner();
           context.read<TechnicianCubit>().streamTechnicians();
           context.read<OrderCubit>().streamOrders(
               MainBoxMixin.mainBox?.get(MainBoxKeys.authUserId.name));
@@ -274,11 +275,13 @@ class AppRoute {
         name: Routes.roomChat.name,
         builder: (_, state) {
           final map = state.extra as Map<String, dynamic>;
-          final chatListId = map['chatListId'];
-          final technician = map['technician'];
+          final chatListId = map['chatListId'] as String;
+          final technicianName = map['technicianName'] as String;
+          final technicianPicture = map['technicianPicture'] as String;
           return RoomChatPage(
             chatListId: chatListId,
-            technician: technician,
+            technicianName: technicianName,
+            technicianPicture: technicianPicture,
           );
         },
       ),

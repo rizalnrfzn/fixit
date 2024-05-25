@@ -85,16 +85,19 @@ class TechnicianDetailPage extends StatelessWidget {
                                   color: colorTheme.blue,
                                 ),
                                 SpacerH(value: Dimens.space8),
-                                Text.rich(
-                                  TextSpan(
-                                    style: textTheme.bodyLarge,
-                                    children: [
-                                      TextSpan(text: '${technician.address} '),
-                                      TextSpan(
-                                          style: textTheme.bodySmall,
-                                          text:
-                                              '(${toKiloMeter(technician.direction!.routes![0].distance!)}km)'),
-                                    ],
+                                Expanded(
+                                  child: Text.rich(
+                                    TextSpan(
+                                      style: textTheme.bodyMedium,
+                                      children: [
+                                        TextSpan(
+                                            text: '${technician.address} '),
+                                        TextSpan(
+                                            style: textTheme.bodySmall,
+                                            text:
+                                                '(${toKiloMeter(technician.direction!.routes![0].distance!)}km)'),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -106,9 +109,9 @@ class TechnicianDetailPage extends StatelessWidget {
                                 vertical: Dimens.space12),
                             child: Wrap(
                               children: List.generate(
-                                technician.electronics!.length,
+                                technician.electronicId!.length,
                                 (index) => ElectronicChip(
-                                  electronicId: technician.electronics![index],
+                                  electronicId: technician.electronicId![index],
                                 ),
                               ),
                             ),
@@ -154,7 +157,7 @@ class TechnicianDetailPage extends StatelessWidget {
                                 ),
                                 SpacerV(value: Dimens.space12),
                                 PhotosVideosContainer(
-                                  picture: technician.images!,
+                                  images: technician.images!,
                                 ),
                               ],
                             ),

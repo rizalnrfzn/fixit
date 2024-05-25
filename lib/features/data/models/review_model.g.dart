@@ -11,8 +11,8 @@ _$ReviewModelImpl _$$ReviewModelImplFromJson(Map<String, dynamic> json) =>
       clientUid: json['clientUid'] as String?,
       review: json['review'] as String?,
       rating: json['rating'] as int?,
-      dateTime: _$JsonConverterFromJson<String, DateTime>(
-          json['dateTime'], const DateTimeConverter().fromJson),
+      dateTime: _$JsonConverterFromJson<Timestamp, DateTime>(
+          json['dateTime'], const TimestampConverter().fromJson),
     );
 
 Map<String, dynamic> _$$ReviewModelImplToJson(_$ReviewModelImpl instance) =>
@@ -20,8 +20,8 @@ Map<String, dynamic> _$$ReviewModelImplToJson(_$ReviewModelImpl instance) =>
       'clientUid': instance.clientUid,
       'review': instance.review,
       'rating': instance.rating,
-      'dateTime': _$JsonConverterToJson<String, DateTime>(
-          instance.dateTime, const DateTimeConverter().toJson),
+      'dateTime': _$JsonConverterToJson<Timestamp, DateTime>(
+          instance.dateTime, const TimestampConverter().toJson),
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

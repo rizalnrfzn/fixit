@@ -12,7 +12,7 @@ part of 'repair_order_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RepairOrderModel _$RepairOrderModelFromJson(Map<String, dynamic> json) {
   return _RepairOrderModel.fromJson(json);
@@ -30,19 +30,19 @@ mixin _$RepairOrderModel {
   String? get clientAddress => throw _privateConstructorUsedError;
   double? get duration => throw _privateConstructorUsedError;
   double? get distance => throw _privateConstructorUsedError;
-  String? get electronic => throw _privateConstructorUsedError;
+  String? get electronicId => throw _privateConstructorUsedError;
   List<String>? get gripe => throw _privateConstructorUsedError;
   List<String>? get damage => throw _privateConstructorUsedError;
   List<String>? get electronicPicture => throw _privateConstructorUsedError;
   int? get checkingCost => throw _privateConstructorUsedError;
   int? get repairCost => throw _privateConstructorUsedError;
   int? get totalCost => throw _privateConstructorUsedError;
-  @DateTimeConverter()
+  @TimestampConverter()
   DateTime? get dateTime => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
   bool? get repair => throw _privateConstructorUsedError;
   bool? get pay => throw _privateConstructorUsedError;
-  bool? get canceled => throw _privateConstructorUsedError;
+  bool? get cancelled => throw _privateConstructorUsedError;
   String? get reasonCancelled => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -66,18 +66,18 @@ abstract class $RepairOrderModelCopyWith<$Res> {
       String? clientAddress,
       double? duration,
       double? distance,
-      String? electronic,
+      String? electronicId,
       List<String>? gripe,
       List<String>? damage,
       List<String>? electronicPicture,
       int? checkingCost,
       int? repairCost,
       int? totalCost,
-      @DateTimeConverter() DateTime? dateTime,
+      @TimestampConverter() DateTime? dateTime,
       String? status,
       bool? repair,
       bool? pay,
-      bool? canceled,
+      bool? cancelled,
       String? reasonCancelled});
 }
 
@@ -102,7 +102,7 @@ class _$RepairOrderModelCopyWithImpl<$Res, $Val extends RepairOrderModel>
     Object? clientAddress = freezed,
     Object? duration = freezed,
     Object? distance = freezed,
-    Object? electronic = freezed,
+    Object? electronicId = freezed,
     Object? gripe = freezed,
     Object? damage = freezed,
     Object? electronicPicture = freezed,
@@ -113,7 +113,7 @@ class _$RepairOrderModelCopyWithImpl<$Res, $Val extends RepairOrderModel>
     Object? status = freezed,
     Object? repair = freezed,
     Object? pay = freezed,
-    Object? canceled = freezed,
+    Object? cancelled = freezed,
     Object? reasonCancelled = freezed,
   }) {
     return _then(_value.copyWith(
@@ -149,9 +149,9 @@ class _$RepairOrderModelCopyWithImpl<$Res, $Val extends RepairOrderModel>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as double?,
-      electronic: freezed == electronic
-          ? _value.electronic
-          : electronic // ignore: cast_nullable_to_non_nullable
+      electronicId: freezed == electronicId
+          ? _value.electronicId
+          : electronicId // ignore: cast_nullable_to_non_nullable
               as String?,
       gripe: freezed == gripe
           ? _value.gripe
@@ -193,9 +193,9 @@ class _$RepairOrderModelCopyWithImpl<$Res, $Val extends RepairOrderModel>
           ? _value.pay
           : pay // ignore: cast_nullable_to_non_nullable
               as bool?,
-      canceled: freezed == canceled
-          ? _value.canceled
-          : canceled // ignore: cast_nullable_to_non_nullable
+      cancelled: freezed == cancelled
+          ? _value.cancelled
+          : cancelled // ignore: cast_nullable_to_non_nullable
               as bool?,
       reasonCancelled: freezed == reasonCancelled
           ? _value.reasonCancelled
@@ -222,18 +222,18 @@ abstract class _$$RepairOrderModelImplCopyWith<$Res>
       String? clientAddress,
       double? duration,
       double? distance,
-      String? electronic,
+      String? electronicId,
       List<String>? gripe,
       List<String>? damage,
       List<String>? electronicPicture,
       int? checkingCost,
       int? repairCost,
       int? totalCost,
-      @DateTimeConverter() DateTime? dateTime,
+      @TimestampConverter() DateTime? dateTime,
       String? status,
       bool? repair,
       bool? pay,
-      bool? canceled,
+      bool? cancelled,
       String? reasonCancelled});
 }
 
@@ -256,7 +256,7 @@ class __$$RepairOrderModelImplCopyWithImpl<$Res>
     Object? clientAddress = freezed,
     Object? duration = freezed,
     Object? distance = freezed,
-    Object? electronic = freezed,
+    Object? electronicId = freezed,
     Object? gripe = freezed,
     Object? damage = freezed,
     Object? electronicPicture = freezed,
@@ -267,7 +267,7 @@ class __$$RepairOrderModelImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? repair = freezed,
     Object? pay = freezed,
-    Object? canceled = freezed,
+    Object? cancelled = freezed,
     Object? reasonCancelled = freezed,
   }) {
     return _then(_$RepairOrderModelImpl(
@@ -303,9 +303,9 @@ class __$$RepairOrderModelImplCopyWithImpl<$Res>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as double?,
-      electronic: freezed == electronic
-          ? _value.electronic
-          : electronic // ignore: cast_nullable_to_non_nullable
+      electronicId: freezed == electronicId
+          ? _value.electronicId
+          : electronicId // ignore: cast_nullable_to_non_nullable
               as String?,
       gripe: freezed == gripe
           ? _value._gripe
@@ -347,9 +347,9 @@ class __$$RepairOrderModelImplCopyWithImpl<$Res>
           ? _value.pay
           : pay // ignore: cast_nullable_to_non_nullable
               as bool?,
-      canceled: freezed == canceled
-          ? _value.canceled
-          : canceled // ignore: cast_nullable_to_non_nullable
+      cancelled: freezed == cancelled
+          ? _value.cancelled
+          : cancelled // ignore: cast_nullable_to_non_nullable
               as bool?,
       reasonCancelled: freezed == reasonCancelled
           ? _value.reasonCancelled
@@ -371,18 +371,18 @@ class _$RepairOrderModelImpl extends _RepairOrderModel {
       this.clientAddress,
       this.duration,
       this.distance,
-      this.electronic,
+      this.electronicId,
       final List<String>? gripe,
       final List<String>? damage,
       final List<String>? electronicPicture,
       this.checkingCost,
       this.repairCost,
       this.totalCost,
-      @DateTimeConverter() this.dateTime,
+      @TimestampConverter() this.dateTime,
       this.status,
       this.repair,
       this.pay,
-      this.canceled,
+      this.cancelled,
       this.reasonCancelled})
       : _gripe = gripe,
         _damage = damage,
@@ -411,7 +411,7 @@ class _$RepairOrderModelImpl extends _RepairOrderModel {
   @override
   final double? distance;
   @override
-  final String? electronic;
+  final String? electronicId;
   final List<String>? _gripe;
   @override
   List<String>? get gripe {
@@ -450,7 +450,7 @@ class _$RepairOrderModelImpl extends _RepairOrderModel {
   @override
   final int? totalCost;
   @override
-  @DateTimeConverter()
+  @TimestampConverter()
   final DateTime? dateTime;
   @override
   final String? status;
@@ -459,13 +459,13 @@ class _$RepairOrderModelImpl extends _RepairOrderModel {
   @override
   final bool? pay;
   @override
-  final bool? canceled;
+  final bool? cancelled;
   @override
   final String? reasonCancelled;
 
   @override
   String toString() {
-    return 'RepairOrderModel(id: $id, clientUid: $clientUid, technicianUid: $technicianUid, clientLocation: $clientLocation, technicianLocation: $technicianLocation, clientAddress: $clientAddress, duration: $duration, distance: $distance, electronic: $electronic, gripe: $gripe, damage: $damage, electronicPicture: $electronicPicture, checkingCost: $checkingCost, repairCost: $repairCost, totalCost: $totalCost, dateTime: $dateTime, status: $status, repair: $repair, pay: $pay, canceled: $canceled, reasonCancelled: $reasonCancelled)';
+    return 'RepairOrderModel(id: $id, clientUid: $clientUid, technicianUid: $technicianUid, clientLocation: $clientLocation, technicianLocation: $technicianLocation, clientAddress: $clientAddress, duration: $duration, distance: $distance, electronicId: $electronicId, gripe: $gripe, damage: $damage, electronicPicture: $electronicPicture, checkingCost: $checkingCost, repairCost: $repairCost, totalCost: $totalCost, dateTime: $dateTime, status: $status, repair: $repair, pay: $pay, cancelled: $cancelled, reasonCancelled: $reasonCancelled)';
   }
 
   @override
@@ -488,8 +488,8 @@ class _$RepairOrderModelImpl extends _RepairOrderModel {
                 other.duration == duration) &&
             (identical(other.distance, distance) ||
                 other.distance == distance) &&
-            (identical(other.electronic, electronic) ||
-                other.electronic == electronic) &&
+            (identical(other.electronicId, electronicId) ||
+                other.electronicId == electronicId) &&
             const DeepCollectionEquality().equals(other._gripe, _gripe) &&
             const DeepCollectionEquality().equals(other._damage, _damage) &&
             const DeepCollectionEquality()
@@ -505,8 +505,8 @@ class _$RepairOrderModelImpl extends _RepairOrderModel {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.repair, repair) || other.repair == repair) &&
             (identical(other.pay, pay) || other.pay == pay) &&
-            (identical(other.canceled, canceled) ||
-                other.canceled == canceled) &&
+            (identical(other.cancelled, cancelled) ||
+                other.cancelled == cancelled) &&
             (identical(other.reasonCancelled, reasonCancelled) ||
                 other.reasonCancelled == reasonCancelled));
   }
@@ -523,7 +523,7 @@ class _$RepairOrderModelImpl extends _RepairOrderModel {
         clientAddress,
         duration,
         distance,
-        electronic,
+        electronicId,
         const DeepCollectionEquality().hash(_gripe),
         const DeepCollectionEquality().hash(_damage),
         const DeepCollectionEquality().hash(_electronicPicture),
@@ -534,7 +534,7 @@ class _$RepairOrderModelImpl extends _RepairOrderModel {
         status,
         repair,
         pay,
-        canceled,
+        cancelled,
         reasonCancelled
       ]);
 
@@ -563,18 +563,18 @@ abstract class _RepairOrderModel extends RepairOrderModel {
       final String? clientAddress,
       final double? duration,
       final double? distance,
-      final String? electronic,
+      final String? electronicId,
       final List<String>? gripe,
       final List<String>? damage,
       final List<String>? electronicPicture,
       final int? checkingCost,
       final int? repairCost,
       final int? totalCost,
-      @DateTimeConverter() final DateTime? dateTime,
+      @TimestampConverter() final DateTime? dateTime,
       final String? status,
       final bool? repair,
       final bool? pay,
-      final bool? canceled,
+      final bool? cancelled,
       final String? reasonCancelled}) = _$RepairOrderModelImpl;
   _RepairOrderModel._() : super._();
 
@@ -600,7 +600,7 @@ abstract class _RepairOrderModel extends RepairOrderModel {
   @override
   double? get distance;
   @override
-  String? get electronic;
+  String? get electronicId;
   @override
   List<String>? get gripe;
   @override
@@ -614,7 +614,7 @@ abstract class _RepairOrderModel extends RepairOrderModel {
   @override
   int? get totalCost;
   @override
-  @DateTimeConverter()
+  @TimestampConverter()
   DateTime? get dateTime;
   @override
   String? get status;
@@ -623,7 +623,7 @@ abstract class _RepairOrderModel extends RepairOrderModel {
   @override
   bool? get pay;
   @override
-  bool? get canceled;
+  bool? get cancelled;
   @override
   String? get reasonCancelled;
   @override

@@ -7,7 +7,6 @@ class Electronic with _$Electronic {
   factory Electronic({
     String? id,
     String? name,
-    String? englishName,
     String? description,
     String? image,
     List<String>? gripe,

@@ -12,7 +12,7 @@ class ReviewModel with _$ReviewModel {
     String? clientUid,
     String? review,
     int? rating,
-    @DateTimeConverter() DateTime? dateTime,
+    @TimestampConverter() DateTime? dateTime,
   }) = _ReviewModel;
 
   ReviewModel._();

@@ -35,13 +35,10 @@ class DashboardPage extends StatelessWidget {
                         Padding(
                           padding:
                               EdgeInsets.symmetric(horizontal: Dimens.space24),
-                          child: TextF(
-                            prefixIcon: Icon(
-                              Icons.search_outlined,
-                              size: Dimens.space24,
-                              color: Theme.of(context).hintColor,
-                            ),
-                            hintText: Strings.of(context)!.search,
+                          child: SearchBox(
+                            allTeknisi:
+                                context.read<TechnicianCubit>().technicians,
+                            dashboard: true,
                           ),
                         ),
                         const SpecialOffersContainer(),

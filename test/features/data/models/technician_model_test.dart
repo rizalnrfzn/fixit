@@ -10,9 +10,12 @@ Future<void> main() async {
     description: 'ini deskripsi',
     currentLocation: const LatLng(-7.4048233479, 109.362945327),
     location: const LatLng(-7.4048233479, 109.362945327),
-    electronics: ['televisi', 'ac'],
+    electronicId: ['12UtbGEah9DXFNr9l1vv', 'DVy2PJgs5XQrMQppUHxx'],
     email: 'aksdjfakls@jgakfmal.dfj',
-    images: ['ksdhfjasdhasf', 'aksjdfja'],
+    images: [
+      'https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/technician%2FmwCuUKWiU1XoEBIWVn6PPeUEORf2%2Fimages%2F0.png?alt=media&token=85fd819b-ac03-4545-8f66-09365fc38d07',
+      'https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/technician%2FmwCuUKWiU1XoEBIWVn6PPeUEORf2%2Fimages%2F1.png?alt=media&token=cadccbe4-959e-4157-b3eb-150a8fff6879'
+    ],
     isOnline: true,
     inOrder: false,
     uid: 'skdjflaksdf',
@@ -20,7 +23,8 @@ Future<void> main() async {
     name: 'ckadkhfasjdfh',
     numberOfReviews: 0,
     phoneNumber: '08919027840312',
-    profilePicture: 'kashdfahsdj',
+    profilePicture:
+        'https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/technician%2FmwCuUKWiU1XoEBIWVn6PPeUEORf2%2Fimages%2FprofilePicture.png?alt=media&token=20c93480-c48a-47c6-9f9e-66d3c11aa055',
     rating: 0,
   );
 
@@ -52,9 +56,12 @@ Future<void> main() async {
       'description': 'ini deskripsi',
       'currentLocation': const GeoPoint(-7.4048233479, 109.362945327),
       'location': const GeoPoint(-7.4048233479, 109.362945327),
-      'electronics': ['televisi', 'ac'],
+      'electronicId': ['12UtbGEah9DXFNr9l1vv', 'DVy2PJgs5XQrMQppUHxx'],
       'email': 'aksdjfakls@jgakfmal.dfj',
-      'images': ['ksdhfjasdhasf'],
+      'images': [
+        'https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/technician%2FmwCuUKWiU1XoEBIWVn6PPeUEORf2%2Fimages%2F0.png?alt=media&token=85fd819b-ac03-4545-8f66-09365fc38d07',
+        'https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/technician%2FmwCuUKWiU1XoEBIWVn6PPeUEORf2%2Fimages%2F1.png?alt=media&token=cadccbe4-959e-4157-b3eb-150a8fff6879'
+      ],
       'isOnline': true,
       'inOrder': false,
       'uid': 'skdjflaksdf',
@@ -62,7 +69,8 @@ Future<void> main() async {
       'name': 'ckadkhfasjdfh',
       'numberOfReviews': 0,
       'phoneNumber': '08919027840312',
-      'profilePicture': 'kashdfahsdj',
+      'profilePicture':
+          'https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/technician%2FmwCuUKWiU1XoEBIWVn6PPeUEORf2%2Fimages%2FprofilePicture.png?alt=media&token=20c93480-c48a-47c6-9f9e-66d3c11aa055',
       'rating': 0,
     };
 

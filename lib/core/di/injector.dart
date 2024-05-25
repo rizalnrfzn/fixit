@@ -1,5 +1,6 @@
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
+import 'package:fixit/features/presentation/cubits/banner_cubit/banner_cubit.dart';
 import 'package:fixit/utils/utils.dart';
 import 'package:get_it/get_it.dart';
 
@@ -58,6 +59,8 @@ void _repositories() {
   sl.registerLazySingleton<ClientRepository>(() => ClientRepositoryImpl(sl()));
 
   sl.registerLazySingleton<ChatRepository>(() => ChatRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<BannerRepository>(() => BannerRepositoryImpl(sl()));
 }
 
 /// Register dataSources
@@ -85,6 +88,9 @@ void _dataSources() {
 
   sl.registerLazySingleton<ChatRemoteDatasource>(
       () => ChatRemoteDatasourceImpl());
+
+  sl.registerLazySingleton<BannerRemoteDatasource>(
+      () => BannerRemoteDatasourceImpl());
 }
 
 void _useCase() {
@@ -103,6 +109,11 @@ void _useCase() {
   // order
   sl.registerLazySingleton(() => StreamRepairOrdersUsecase(sl()));
   sl.registerLazySingleton(() => PostOrderUsecase(sl()));
+  sl.registerLazySingleton(() => AcceptRepairOrderUsecase(sl()));
+  sl.registerLazySingleton(() => RejectRepairOrderUsecase(sl()));
+  sl.registerLazySingleton(() => PaymentOrderUsecase(sl()));
+  sl.registerLazySingleton(() => PostReviewUsecase(sl()));
+  sl.registerLazySingleton(() => CancelOrderUsecase(sl()));
 
   // electronic
   sl.registerLazySingleton(() => StreamElectronicsUsecase(sl()));
@@ -119,6 +130,10 @@ void _useCase() {
   sl.registerLazySingleton(() => GetChatUsecase(sl()));
   sl.registerLazySingleton(() => StreamChatUsecase(sl()));
   sl.registerLazySingleton(() => PostChatUsecase(sl()));
+  sl.registerLazySingleton(() => NewChatUsecase(sl()));
+  sl.registerLazySingleton(() => ReadChatUsecase(sl()));
+
+  sl.registerLazySingleton(() => GetAllBannerUsecase(sl()));
 }
 
 void _cubit() {
@@ -126,9 +141,9 @@ void _cubit() {
   sl.registerFactory(() => AuthCubit(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => ElectronicCubit(sl()));
   sl.registerFactory(() => TechnicianCubit(sl(), sl(), sl()));
-  sl.registerFactory(() => OrderCubit(sl()));
+  sl.registerFactory(() => OrderCubit(sl(), sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => LocationCubit(sl(), sl(), sl()));
-  sl.registerFactory(() => ChatCubit(sl(), sl(), sl()));
+  sl.registerFactory(() => ChatCubit(sl(), sl(), sl(), sl(), sl()));
 
   /// general pages
   sl.registerFactory(() => SettingsCubit());
@@ -150,4 +165,6 @@ void _cubit() {
   sl.registerFactory(() => OrderSummaryCubit(sl()));
   sl.registerFactory(() => OrderDetailCubit(sl()));
   sl.registerFactory(() => OrderTileCubit(sl()));
+
+  sl.registerFactory(() => BannerCubit(sl()));
 }

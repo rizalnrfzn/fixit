@@ -11,7 +11,6 @@ _$ElectronicModelImpl _$$ElectronicModelImplFromJson(
     _$ElectronicModelImpl(
       id: json['id'] as String?,
       name: json['name'] as String?,
-      englishName: json['englishName'] as String?,
       description: json['description'] as String?,
       image: json['image'] as String?,
       gripe:
@@ -23,7 +22,6 @@ Map<String, dynamic> _$$ElectronicModelImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'englishName': instance.englishName,
       'description': instance.description,
       'image': instance.image,
       'gripe': instance.gripe,

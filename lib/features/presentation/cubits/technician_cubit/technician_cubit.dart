@@ -85,6 +85,11 @@ class TechnicianCubit extends Cubit<TechnicianState> {
             technicianNew.add(data.copyWith(direction: direction));
           }
         }
+        technicianNew.sort(
+          (a, b) => (a.direction!.routes![0].distance!).compareTo(
+            b.direction!.routes![0].distance!,
+          ),
+        );
         technicians = technicianNew;
         emit(_StreamTechnicians(technicianNew, geolocation!));
       },

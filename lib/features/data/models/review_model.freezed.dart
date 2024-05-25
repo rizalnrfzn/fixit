@@ -12,7 +12,7 @@ part of 'review_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) {
   return _ReviewModel.fromJson(json);
@@ -23,7 +23,7 @@ mixin _$ReviewModel {
   String? get clientUid => throw _privateConstructorUsedError;
   String? get review => throw _privateConstructorUsedError;
   int? get rating => throw _privateConstructorUsedError;
-  @DateTimeConverter()
+  @TimestampConverter()
   DateTime? get dateTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $ReviewModelCopyWith<$Res> {
       {String? clientUid,
       String? review,
       int? rating,
-      @DateTimeConverter() DateTime? dateTime});
+      @TimestampConverter() DateTime? dateTime});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ abstract class _$$ReviewModelImplCopyWith<$Res>
       {String? clientUid,
       String? review,
       int? rating,
-      @DateTimeConverter() DateTime? dateTime});
+      @TimestampConverter() DateTime? dateTime});
 }
 
 /// @nodoc
@@ -143,7 +143,7 @@ class _$ReviewModelImpl extends _ReviewModel {
       {this.clientUid,
       this.review,
       this.rating,
-      @DateTimeConverter() this.dateTime})
+      @TimestampConverter() this.dateTime})
       : super._();
 
   factory _$ReviewModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -156,7 +156,7 @@ class _$ReviewModelImpl extends _ReviewModel {
   @override
   final int? rating;
   @override
-  @DateTimeConverter()
+  @TimestampConverter()
   final DateTime? dateTime;
 
   @override
@@ -201,7 +201,7 @@ abstract class _ReviewModel extends ReviewModel {
       {final String? clientUid,
       final String? review,
       final int? rating,
-      @DateTimeConverter() final DateTime? dateTime}) = _$ReviewModelImpl;
+      @TimestampConverter() final DateTime? dateTime}) = _$ReviewModelImpl;
   _ReviewModel._() : super._();
 
   factory _ReviewModel.fromJson(Map<String, dynamic> json) =
@@ -214,7 +214,7 @@ abstract class _ReviewModel extends ReviewModel {
   @override
   int? get rating;
   @override
-  @DateTimeConverter()
+  @TimestampConverter()
   DateTime? get dateTime;
   @override
   @JsonKey(ignore: true)

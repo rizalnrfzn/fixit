@@ -1,4 +1,7 @@
 export 'auth_user.dart';
+export 'banner_ad.dart';
+export 'chat.dart';
+export 'chat_list.dart';
 export 'client.dart';
 export 'direction.dart';
 export 'electronic.dart';
@@ -6,5 +9,3 @@ export 'geolocation.dart';
 export 'repair_order.dart';
 export 'review.dart';
 export 'technician.dart';
-export 'chat.dart';
-export 'chat_list.dart';

@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
-import 'package:fixit/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -55,11 +54,7 @@ class ServiceIcon extends StatelessWidget {
           ),
           SpacerV(value: Dimens.space6),
           Text(
-            (MainBoxMixin.mainBox?.get(MainBoxKeys.locale.name) as String? ??
-                        'en') ==
-                    'en'
-                ? electronic.englishName!
-                : electronic.name!,
+            electronic.name!,
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme

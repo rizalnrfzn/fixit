@@ -4,14 +4,26 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
+import 'package:fixit/utils/utils.dart';
 
 abstract class RepairOrderRemoteDatasource {
   Stream<List<RepairOrderModel>> streamRepairOrders(String uid);
 
   Future<Either<Failure, RepairOrderModel>> postOrder(PostOrderParams params);
+
+  Future<Either<Failure, RepairOrderModel>> acceptRepair(RepairOrder params);
+
+  Future<Either<Failure, RepairOrderModel>> rejectRepair(RepairOrder params);
+
+  Future<Either<Failure, RepairOrderModel>> paymentOrder(RepairOrder params);
+
+  Future<Either<Failure, RepairOrderModel>> review(PostReviewParams params);
+
+  Future<Either<Failure, RepairOrderModel>> cancelOrder(RepairOrder params);
 }
 
 class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
+  final firebase = FirebaseFirestore.instance;
   final _collRef = FirebaseFirestore.instance.collection('order').withConverter(
         fromFirestore: RepairOrderModel.fromFirestore,
         toFirestore: RepairOrderModel.toFirestore,
@@ -31,6 +43,7 @@ class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
     try {
       yield* _collRef
           .where('clientUid', isEqualTo: _auth.currentUser!.uid)
+          .orderBy('dateTime', descending: true)
           .snapshots()
           .map(
             (event) => event.docs
@@ -83,6 +96,156 @@ class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
       return Right(data.data()!);
     } on FirebaseException catch (e) {
       return Left(FirestoreFailure(e.code));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RepairOrderModel>> acceptRepair(
+      RepairOrder params) async {
+    try {
+      await firebase.collection('order').doc(params.id).update({
+        'status': Status.perbaikanElektronik.name,
+        'repair': true,
+      });
+
+      return Right(
+        params
+            .copyWith(
+              status: Status.perbaikanElektronik.name,
+              repair: true,
+            )
+            .toModel(),
+      );
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure(e.code));
+    } catch (e) {
+      return Left(FirestoreFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RepairOrderModel>> rejectRepair(
+      RepairOrder params) async {
+    try {
+      await firebase.collection('order').doc(params.id).update({
+        'status': Status.pembayaran.name,
+        'repair': false,
+      });
+
+      return Right(
+        params
+            .copyWith(
+              status: Status.pembayaran.name,
+              repair: false,
+            )
+            .toModel(),
+      );
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure(e.code));
+    } catch (e) {
+      return Left(FirestoreFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RepairOrderModel>> paymentOrder(
+      RepairOrder params) async {
+    try {
+      await firebase.collection('order').doc(params.id).update({
+        'pay': true,
+      });
+
+      return Right(
+        params
+            .copyWith(
+              pay: true,
+            )
+            .toModel(),
+      );
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure(e.code));
+    } catch (e) {
+      return Left(FirestoreFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RepairOrderModel>> review(
+      PostReviewParams params) async {
+    try {
+      final review = params.review.toModel();
+      await firebase
+          .collection('technician')
+          .doc(params.order.technicianUid)
+          .collection('review')
+          .add(review.toJson());
+
+      final allReviewQuery = await firebase
+          .collection('technician')
+          .doc(params.order.technicianUid)
+          .collection('review')
+          .withConverter(
+            fromFirestore: ReviewModel.fromFirestore,
+            toFirestore: ReviewModel.toFirestore,
+          )
+          .get();
+
+      final allReview = allReviewQuery.docs.map((e) => e.data()).toList();
+
+      int sum = 0;
+
+      for (var review in allReview) {
+        sum += review.rating!;
+      }
+
+      double arr = double.parse((sum / allReview.length).toStringAsFixed(1));
+
+      await firebase
+          .collection('technician')
+          .doc(params.order.technicianUid)
+          .update({
+        'numberOfReviews': (params.technician.numberOfReviews ?? 0) + 1,
+        'rating': arr,
+      });
+
+      await firebase.collection('order').doc(params.order.id).update({
+        'status': Status.pesananSelesai.name,
+      });
+
+      return Right(
+        params.order
+            .copyWith(
+              status: Status.pesananSelesai.name,
+            )
+            .toModel(),
+      );
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure(e.code));
+    } catch (e) {
+      return Left(FirestoreFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RepairOrderModel>> cancelOrder(
+      RepairOrder params) async {
+    try {
+      await firebase.collection('order').doc(params.id).update({
+        'cancelled': true,
+        'reasonCancelled': params.reasonCancelled,
+      });
+
+      return Right(
+        params
+            .copyWith(
+              cancelled: true,
+            )
+            .toModel(),
+      );
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure(e.code));
+    } catch (e) {
+      return Left(FirestoreFailure(e.toString()));
     }
   }
 }

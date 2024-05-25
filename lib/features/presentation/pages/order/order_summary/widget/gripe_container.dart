@@ -51,7 +51,7 @@ class _GripeContainerState extends State<GripeContainer> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Gripe',
+                          Strings.of(context)!.gripe,
                           style: textTheme.bodyLarge,
                         ),
                         const Icon(Icons.keyboard_arrow_up),
@@ -59,7 +59,36 @@ class _GripeContainerState extends State<GripeContainer> {
                     ),
                   ),
                 ),
-                Text('${widget.gripe}'),
+                Column(
+                  children: List.generate(
+                    widget.gripe.length,
+                    (index) => Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: Dimens.space20,
+                            vertical: Dimens.space12,
+                          ),
+                          child: Container(
+                            width: Dimens.space8,
+                            height: Dimens.space8,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: textTheme.bodyLarge!.color,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                EdgeInsets.symmetric(vertical: Dimens.space12),
+                            child: Text(widget.gripe[index]),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             )
           : InkWell(
@@ -73,7 +102,7 @@ class _GripeContainerState extends State<GripeContainer> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Gripe',
+                      Strings.of(context)!.gripe,
                       style: textTheme.bodyLarge,
                     ),
                     const Icon(Icons.keyboard_arrow_down),

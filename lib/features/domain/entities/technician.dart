@@ -18,7 +18,7 @@ class Technician with _$Technician {
     String? address,
     LatLng? location,
     LatLng? currentLocation,
-    List<String>? electronics,
+    List<String>? electronicId,
     bool? isVerified,
     bool? isOnline,
     bool? inOrder,
@@ -26,4 +26,6 @@ class Technician with _$Technician {
     int? numberOfReviews,
     Direction? direction,
   }) = _Technician;
+
+  Technician._();
 }

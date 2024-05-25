@@ -10,7 +10,6 @@ class ElectronicModel with _$ElectronicModel {
   factory ElectronicModel({
     String? id,
     String? name,
-    String? englishName,
     String? description,
     String? image,
     List<String>? gripe,
@@ -24,7 +23,6 @@ class ElectronicModel with _$ElectronicModel {
   Electronic toEntity() => Electronic(
         id: id,
         name: name,
-        englishName: englishName,
         description: description,
         image: image,
         gripe: gripe,

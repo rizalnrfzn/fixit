@@ -100,25 +100,13 @@ class _OrderCanceledListTileState extends State<OrderCanceledListTile> {
                         BlocBuilder<ElectronicCubit, ElectronicState>(
                           builder: (context, state) {
                             return Text(
-                              (MainBoxMixin.mainBox
-                                                  ?.get(MainBoxKeys.locale.name)
-                                              as String? ??
-                                          'en') ==
-                                      'en'
-                                  ? context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id ==
-                                          widget.repairOrder.electronic)
-                                      .englishName!
-                                  : context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id ==
-                                          widget.repairOrder.electronic)
-                                      .name!,
+                              context
+                                  .read<ElectronicCubit>()
+                                  .electronics
+                                  .firstWhere((element) =>
+                                      element.id ==
+                                      widget.repairOrder.electronicId)
+                                  .name!,
                               maxLines: 2,
                               style: Theme.of(context).textTheme.bodyMedium,
                             );

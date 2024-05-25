@@ -29,6 +29,7 @@ class TextF extends StatefulWidget {
     this.hintText,
     this.autofillHints,
     this.semantic,
+    this.onTapOutside,
   });
 
   final FocusNode? curFocusNode;
@@ -54,6 +55,7 @@ class TextF extends StatefulWidget {
   final String? hintText;
   final Iterable<String>? autofillHints;
   final String? semantic;
+  final Function(PointerDownEvent)? onTapOutside;
 
   @override
   State<TextF> createState() => _TextFState();
@@ -164,6 +166,7 @@ class _TextFState extends State<TextF> {
                 ),
                 validator: widget.validator as String? Function(String?)?,
                 onChanged: widget.onChanged,
+                onTapOutside: widget.onTapOutside,
                 onTap: widget.onTap as void Function()?,
                 onFieldSubmitted: (value) {
                   setState(() {

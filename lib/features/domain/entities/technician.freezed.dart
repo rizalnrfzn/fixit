@@ -12,7 +12,7 @@ part of 'technician.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Technician {
@@ -36,8 +36,8 @@ mixin _$Technician {
   set location(LatLng? value) => throw _privateConstructorUsedError;
   LatLng? get currentLocation => throw _privateConstructorUsedError;
   set currentLocation(LatLng? value) => throw _privateConstructorUsedError;
-  List<String>? get electronics => throw _privateConstructorUsedError;
-  set electronics(List<String>? value) => throw _privateConstructorUsedError;
+  List<String>? get electronicId => throw _privateConstructorUsedError;
+  set electronicId(List<String>? value) => throw _privateConstructorUsedError;
   bool? get isVerified => throw _privateConstructorUsedError;
   set isVerified(bool? value) => throw _privateConstructorUsedError;
   bool? get isOnline => throw _privateConstructorUsedError;
@@ -73,7 +73,7 @@ abstract class $TechnicianCopyWith<$Res> {
       String? address,
       LatLng? location,
       LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
@@ -107,7 +107,7 @@ class _$TechnicianCopyWithImpl<$Res, $Val extends Technician>
     Object? address = freezed,
     Object? location = freezed,
     Object? currentLocation = freezed,
-    Object? electronics = freezed,
+    Object? electronicId = freezed,
     Object? isVerified = freezed,
     Object? isOnline = freezed,
     Object? inOrder = freezed,
@@ -156,9 +156,9 @@ class _$TechnicianCopyWithImpl<$Res, $Val extends Technician>
           ? _value.currentLocation
           : currentLocation // ignore: cast_nullable_to_non_nullable
               as LatLng?,
-      electronics: freezed == electronics
-          ? _value.electronics
-          : electronics // ignore: cast_nullable_to_non_nullable
+      electronicId: freezed == electronicId
+          ? _value.electronicId
+          : electronicId // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       isVerified: freezed == isVerified
           ? _value.isVerified
@@ -219,7 +219,7 @@ abstract class _$$TechnicianImplCopyWith<$Res>
       String? address,
       LatLng? location,
       LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
@@ -252,7 +252,7 @@ class __$$TechnicianImplCopyWithImpl<$Res>
     Object? address = freezed,
     Object? location = freezed,
     Object? currentLocation = freezed,
-    Object? electronics = freezed,
+    Object? electronicId = freezed,
     Object? isVerified = freezed,
     Object? isOnline = freezed,
     Object? inOrder = freezed,
@@ -301,9 +301,9 @@ class __$$TechnicianImplCopyWithImpl<$Res>
           ? _value.currentLocation
           : currentLocation // ignore: cast_nullable_to_non_nullable
               as LatLng?,
-      electronics: freezed == electronics
-          ? _value.electronics
-          : electronics // ignore: cast_nullable_to_non_nullable
+      electronicId: freezed == electronicId
+          ? _value.electronicId
+          : electronicId // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       isVerified: freezed == isVerified
           ? _value.isVerified
@@ -335,7 +335,7 @@ class __$$TechnicianImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TechnicianImpl implements _Technician {
+class _$TechnicianImpl extends _Technician {
   _$TechnicianImpl(
       {this.uid,
       this.name,
@@ -347,13 +347,14 @@ class _$TechnicianImpl implements _Technician {
       this.address,
       this.location,
       this.currentLocation,
-      this.electronics,
+      this.electronicId,
       this.isVerified,
       this.isOnline,
       this.inOrder,
       this.rating,
       this.numberOfReviews,
-      this.direction});
+      this.direction})
+      : super._();
 
   @override
   String? uid;
@@ -376,7 +377,7 @@ class _$TechnicianImpl implements _Technician {
   @override
   LatLng? currentLocation;
   @override
-  List<String>? electronics;
+  List<String>? electronicId;
   @override
   bool? isVerified;
   @override
@@ -392,7 +393,7 @@ class _$TechnicianImpl implements _Technician {
 
   @override
   String toString() {
-    return 'Technician(uid: $uid, name: $name, email: $email, phoneNumber: $phoneNumber, description: $description, profilePicture: $profilePicture, images: $images, address: $address, location: $location, currentLocation: $currentLocation, electronics: $electronics, isVerified: $isVerified, isOnline: $isOnline, inOrder: $inOrder, rating: $rating, numberOfReviews: $numberOfReviews, direction: $direction)';
+    return 'Technician(uid: $uid, name: $name, email: $email, phoneNumber: $phoneNumber, description: $description, profilePicture: $profilePicture, images: $images, address: $address, location: $location, currentLocation: $currentLocation, electronicId: $electronicId, isVerified: $isVerified, isOnline: $isOnline, inOrder: $inOrder, rating: $rating, numberOfReviews: $numberOfReviews, direction: $direction)';
   }
 
   @JsonKey(ignore: true)
@@ -402,7 +403,7 @@ class _$TechnicianImpl implements _Technician {
       __$$TechnicianImplCopyWithImpl<_$TechnicianImpl>(this, _$identity);
 }
 
-abstract class _Technician implements Technician {
+abstract class _Technician extends Technician {
   factory _Technician(
       {String? uid,
       String? name,
@@ -414,13 +415,14 @@ abstract class _Technician implements Technician {
       String? address,
       LatLng? location,
       LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
       double? rating,
       int? numberOfReviews,
       Direction? direction}) = _$TechnicianImpl;
+  _Technician._() : super._();
 
   @override
   String? get uid;
@@ -453,8 +455,8 @@ abstract class _Technician implements Technician {
   LatLng? get currentLocation;
   set currentLocation(LatLng? value);
   @override
-  List<String>? get electronics;
-  set electronics(List<String>? value);
+  List<String>? get electronicId;
+  set electronicId(List<String>? value);
   @override
   bool? get isVerified;
   set isVerified(bool? value);

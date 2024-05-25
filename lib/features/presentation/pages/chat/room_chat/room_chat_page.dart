@@ -8,11 +8,13 @@ class RoomChatPage extends StatefulWidget {
   const RoomChatPage({
     super.key,
     required this.chatListId,
-    required this.technician,
+    required this.technicianName,
+    required this.technicianPicture,
   });
 
   final String chatListId;
-  final Technician technician;
+  final String technicianName;
+  final String technicianPicture;
 
   @override
   State<RoomChatPage> createState() => _RoomChatPageState();
@@ -47,14 +49,14 @@ class _RoomChatPageState extends State<RoomChatPage> {
           title: Row(
             children: [
               ProfilePicture(
-                pictureUrl: widget.technician.profilePicture!,
+                pictureUrl: widget.technicianPicture,
                 radius: Dimens.space20,
                 border: Dimens.space2,
                 onTap: () {},
               ),
               SizedBox(width: Dimens.space12),
               Text(
-                widget.technician.name!,
+                widget.technicianName,
                 style:
                     textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
               ),

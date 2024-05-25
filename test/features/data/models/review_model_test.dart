@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:fixit/features/features.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -38,11 +39,11 @@ Future<void> main() async {
     // arrange
     final reviewMap = {
       'clientUid': 'yhlObRZToLQhfJoJzv1Aykcy7B93',
-      'clientName': null,
-      'clientPicture': null,
       'rating': 5,
       'review': 'bagus',
-      'dateTime': '2023-08-27T21:57:40.273702',
+      'dateTime': Timestamp.fromDate(
+        DateTime.parse('2023-08-27T21:57:40.273702'),
+      ),
     };
 
     // act

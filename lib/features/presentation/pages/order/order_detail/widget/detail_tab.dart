@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
-import 'package:fixit/features/presentation/widgets/network_image_dialog.dart';
 import 'package:fixit/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,8 +38,8 @@ class DetailTab extends StatelessWidget {
                   right: context
                       .read<ElectronicCubit>()
                       .electronics
-                      .firstWhere((element) => element.id == order.electronic)
-                      .englishName!,
+                      .firstWhere((element) => element.id == order.electronicId)
+                      .name!,
                 ),
                 RowText(
                   left: Strings.of(context)!.technician,

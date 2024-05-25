@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
 
@@ -11,6 +12,10 @@ abstract class ChatRemoteDatasource {
   Future<Either<Failure, List<ChatModel>>> getChat(String idChat);
 
   Future<Either<Failure, ChatModel>> postChat(PostChatParams params);
+
+  Future<Either<Failure, ChatListModel>> newChatList(String params);
+
+  Future<Either<Failure, ChatListModel>> readChat(ChatList params);
 }
 
 class ChatRemoteDatasourceImpl implements ChatRemoteDatasource {
@@ -41,7 +46,7 @@ class ChatRemoteDatasourceImpl implements ChatRemoteDatasource {
     try {
       yield* _collRef
           .where('clientUid', isEqualTo: uid)
-          .orderBy('lastTime', descending: false)
+          .orderBy('lastTime', descending: true)
           .snapshots()
           .map(
             (event) => event.docs
@@ -94,6 +99,12 @@ class ChatRemoteDatasourceImpl implements ChatRemoteDatasource {
 
       await _collRef.doc(chatList.id).update(chatListUpdate);
 
+      await _collRef
+          .doc(chatList.id)
+          .collection('chats')
+          .doc(postChat.id)
+          .update({'id': postChat.id});
+
       final newChat = await _collRef
           .doc(chatList.id)
           .collection('chats')
@@ -103,6 +114,57 @@ class ChatRemoteDatasourceImpl implements ChatRemoteDatasource {
       return right(ChatModel.fromJson(newChat.data()!));
     } on FirebaseException catch (e) {
       return left(FirestoreFailure(e.code));
+    } catch (e) {
+      return left(FirestoreFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ChatListModel>> newChatList(String params) async {
+    try {
+      final clientUid = FirebaseAuth.instance.currentUser?.uid;
+      final response = await _collRef.add(
+        ChatListModel(clientUid: clientUid, technicianUid: params).toJson(),
+      );
+
+      final chatList = ChatListModel(
+        id: response.id,
+        clientUid: clientUid,
+        technicianUid: params,
+        clientUnread: 0,
+        technicianUnread: 0,
+        lastTime: DateTime.now(),
+      );
+
+      await _collRef.doc(response.id).update(chatList.toJson());
+
+      return Right(chatList);
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure(e.code));
+    } catch (e) {
+      return Left(FirestoreFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ChatListModel>> readChat(ChatList params) async {
+    try {
+      for (int i = 0; i < params.chats!.length; i++) {
+        if (params.chats![i].isRead == false &&
+            params.chats![i].recipient == params.clientUid) {
+          await _collRef
+              .doc(params.id)
+              .collection('chats')
+              .doc(params.chats![i].id)
+              .update({'isRead': true});
+        }
+      }
+
+      await _collRef.doc(params.id).update({'clientUnread': 0});
+
+      final response = params.copyWith(clientUnread: 0).toModel();
+
+      return right(response);
     } catch (e) {
       return left(FirestoreFailure(e.toString()));
     }

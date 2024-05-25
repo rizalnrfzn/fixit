@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
-import 'package:fixit/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -87,23 +86,12 @@ class OrderDoneListTile extends StatelessWidget {
                         BlocBuilder<ElectronicCubit, ElectronicState>(
                           builder: (context, state) {
                             return Text(
-                              (MainBoxMixin.mainBox
-                                                  ?.get(MainBoxKeys.locale.name)
-                                              as String? ??
-                                          'en') ==
-                                      'en'
-                                  ? context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id == repairOrder.electronic)
-                                      .englishName!
-                                  : context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id == repairOrder.electronic)
-                                      .name!,
+                              context
+                                  .read<ElectronicCubit>()
+                                  .electronics
+                                  .firstWhere((element) =>
+                                      element.id == repairOrder.electronicId)
+                                  .name!,
                               maxLines: 2,
                               style: Theme.of(context).textTheme.bodyMedium,
                             );

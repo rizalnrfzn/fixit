@@ -1,6 +1,5 @@
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
-import 'package:fixit/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,55 +17,70 @@ class TechnicianListPage extends StatelessWidget {
       appBar: MyAppBar(context,
               title: filter == null
                   ? 'Technician'
-                  : (MainBoxMixin.mainBox?.get(MainBoxKeys.locale.name)
-                                  as String? ??
-                              'en') ==
-                          'en'
-                      ? context
-                          .read<ElectronicCubit>()
-                          .electronics
-                          .firstWhere((element) => element.id == filter)
-                          .englishName!
-                      : context
-                          .read<ElectronicCubit>()
-                          .electronics
-                          .firstWhere((element) => element.id == filter)
-                          .name!)
+                  : context
+                      .read<ElectronicCubit>()
+                      .electronics
+                      .firstWhere((element) => element.id == filter)
+                      .name!)
           .call(),
       child: BlocBuilder<TechnicianCubit, TechnicianState>(
         builder: (context, state) {
-          return SafeArea(
-            child: context
-                    .read<TechnicianCubit>()
-                    .technicians
-                    .where((element) => element.electronics!.contains(filter))
-                    .isEmpty
-                ? Center(
-                    child: Text(Strings.of(context)!.noTechnician),
-                  )
-                : Column(
-                    children: List.generate(
-                      context
-                          .read<TechnicianCubit>()
-                          .technicians
-                          .where((element) =>
-                              element.electronics!.contains(filter))
-                          .length,
-                      (index) => Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: Dimens.space24),
-                        child: TechnicianListTile(
-                          technician: context
-                              .read<TechnicianCubit>()
-                              .technicians
-                              .where((element) =>
-                                  element.electronics!.contains(filter))
-                              .toList()[index],
+          if (filter != null) {
+            return SafeArea(
+              child: context
+                      .read<TechnicianCubit>()
+                      .technicians
+                      .where(
+                          (element) => element.electronicId!.contains(filter))
+                      .isEmpty
+                  ? Center(
+                      child: Text(Strings.of(context)!.noTechnician),
+                    )
+                  : Column(
+                      children: List.generate(
+                        context
+                            .read<TechnicianCubit>()
+                            .technicians
+                            .where((element) =>
+                                element.electronicId!.contains(filter))
+                            .length,
+                        (index) => Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: Dimens.space16),
+                          child: TechnicianListTile(
+                            technician: context
+                                .read<TechnicianCubit>()
+                                .technicians
+                                .where((element) =>
+                                    element.electronicId!.contains(filter))
+                                .toList()[index],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-          );
+            );
+          } else {
+            return SafeArea(
+              child: context.read<TechnicianCubit>().technicians.isEmpty
+                  ? Center(
+                      child: Text(Strings.of(context)!.noTechnician),
+                    )
+                  : Column(
+                      children: List.generate(
+                        context.read<TechnicianCubit>().technicians.length,
+                        (index) => Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: Dimens.space16),
+                          child: TechnicianListTile(
+                            technician: context
+                                .read<TechnicianCubit>()
+                                .technicians[index],
+                          ),
+                        ),
+                      ),
+                    ),
+            );
+          }
         },
       ),
     );

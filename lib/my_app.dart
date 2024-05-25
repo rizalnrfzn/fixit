@@ -47,6 +47,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => sl<ChatCubit>(),
         ),
+        BlocProvider(
+          create: (context) => sl<BannerCubit>(),
+        ),
       ],
       child: OKToast(
         child: ScreenUtilInit(
@@ -84,7 +87,7 @@ class MyApp extends StatelessWidget {
                 title: Constants.get.appName,
                 theme: themeLight(context),
                 darkTheme: themeDark(context),
-                locale: Locale(data.type ?? "en"),
+                locale: Locale(data.type ?? "id"),
                 supportedLocales: L10n.all,
                 themeMode: data.activeTheme.mode,
               ),

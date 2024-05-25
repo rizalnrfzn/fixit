@@ -44,7 +44,7 @@ class TechniciansRemoteDatasourceImpl implements TechnicianRemoteDatasource {
         );
 
     try {
-      yield* collRef.snapshots().map(
+      yield* collRef.orderBy('dateTime', descending: true).snapshots().map(
             (event) => event.docs
                 .map(
                   (e) => e.data(),

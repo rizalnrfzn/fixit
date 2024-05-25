@@ -76,9 +76,9 @@ class _MakeOrderPageState extends State<MakeOrderPage> {
                       children: [
                         Column(
                           children: List.generate(
-                            technician.electronics!.length,
+                            technician.electronicId!.length,
                             (index) => RadioListTile<String>(
-                              value: technician.electronics![index],
+                              value: technician.electronicId![index],
                               groupValue:
                                   context.read<MakeOrderCubit>().idElectronic,
                               onChanged: (value) {
@@ -92,7 +92,7 @@ class _MakeOrderPageState extends State<MakeOrderPage> {
                                     .electronics
                                     .firstWhere((element) =>
                                         element.id ==
-                                        technician.electronics![index])
+                                        technician.electronicId![index])
                                     .name!,
                               ),
                             ),
@@ -487,7 +487,7 @@ class _MakeOrderPageState extends State<MakeOrderPage> {
                                               direction.routes![0].duration,
                                           distance:
                                               direction.routes![0].distance,
-                                          electronic: context
+                                          electronicId: context
                                               .read<MakeOrderCubit>()
                                               .idElectronic,
                                           gripe: context
@@ -500,9 +500,9 @@ class _MakeOrderPageState extends State<MakeOrderPage> {
                                           totalCost: repairCost,
                                           dateTime: null,
                                           status: Status.konfirmasiTeknisi.name,
-                                          repair: null,
-                                          pay: null,
-                                          canceled: null,
+                                          repair: false,
+                                          pay: false,
+                                          cancelled: false,
                                           reasonCancelled: null,
                                         );
 

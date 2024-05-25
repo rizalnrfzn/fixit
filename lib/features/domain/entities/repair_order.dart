@@ -15,7 +15,7 @@ class RepairOrder with _$RepairOrder {
     String? clientAddress,
     double? duration,
     double? distance,
-    String? electronic,
+    String? electronicId,
     List<String>? gripe,
     List<String>? damage,
     List<String>? electronicPicture,
@@ -26,7 +26,7 @@ class RepairOrder with _$RepairOrder {
     String? status,
     bool? repair,
     bool? pay,
-    bool? canceled,
+    bool? cancelled,
     String? reasonCancelled,
     Direction? direction,
   }) = _RepairOrder;
@@ -42,7 +42,7 @@ class RepairOrder with _$RepairOrder {
         clientAddress: clientAddress,
         duration: duration,
         distance: distance,
-        electronic: electronic,
+        electronicId: electronicId,
         gripe: gripe,
         damage: damage,
         electronicPicture: electronicPicture,
@@ -53,7 +53,7 @@ class RepairOrder with _$RepairOrder {
         status: status,
         repair: repair,
         pay: pay,
-        canceled: canceled,
+        cancelled: cancelled,
         reasonCancelled: reasonCancelled,
       );
 }

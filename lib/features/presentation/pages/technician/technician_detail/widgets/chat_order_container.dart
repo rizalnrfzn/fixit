@@ -1,5 +1,6 @@
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
+import 'package:fixit/utils/ext/ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,16 +33,71 @@ class ChatOrderContainer extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                context.push(Routes.roomChat.path);
+            BlocListener<ChatCubit, ChatState>(
+              listener: (context, state) {
+                state.whenOrNull(
+                  loading: () => context.show(),
+                  failure: (message) {
+                    context.dismiss();
+                    message.toToastError(context);
+                  },
+                  success: (chatList) {
+                    context.dismiss();
+
+                    final chat = chatList
+                        .firstWhere((element) => element.technicianUid == uid);
+                    final technician = context
+                        .read<TechnicianCubit>()
+                        .technicians
+                        .firstWhere((element) => element.uid == uid);
+
+                    context.read<ChatCubit>().readChat(chat);
+                    context.push(
+                      Routes.roomChat.path,
+                      extra: {
+                        'chatListId': chat.id,
+                        'technicianName': technician.name,
+                        'technicianPicture': technician.profilePicture,
+                      },
+                    );
+                  },
+                );
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).hintColor,
-                foregroundColor: Palette.background,
-                minimumSize: Size(180.w, 50.w),
+              child: ElevatedButton(
+                onPressed: () {
+                  if (context
+                      .read<ChatCubit>()
+                      .chatList
+                      .any((element) => element.technicianUid == uid)) {
+                    final technician = context
+                        .read<TechnicianCubit>()
+                        .technicians
+                        .firstWhere((element) => element.uid == uid);
+                    final chat = context
+                        .read<ChatCubit>()
+                        .chatList
+                        .firstWhere((element) => element.technicianUid == uid);
+                    print(chat.id);
+                    print(technician);
+                    context.push(
+                      Routes.roomChat.path,
+                      extra: {
+                        'chatListId': chat.id,
+                        'technicianName': technician.name,
+                        'technicianPicture': technician.profilePicture,
+                      },
+                    );
+                  } else {
+                    context.read<ChatCubit>().newChat(uid);
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).hintColor,
+                  foregroundColor: Palette.background,
+                  minimumSize: Size(180.w, 50.w),
+                ),
+                child: Text(Strings.of(context)!.chat),
               ),
-              child: Text(Strings.of(context)!.chat),
             ),
             BlocBuilder<TechnicianCubit, TechnicianState>(
               builder: (_, __) {

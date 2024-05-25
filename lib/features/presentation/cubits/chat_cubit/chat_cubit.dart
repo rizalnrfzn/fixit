@@ -13,11 +13,15 @@ class ChatCubit extends Cubit<ChatState> {
     this._streamChatList,
     this._getChat,
     this._postChat,
+    this._newChat,
+    this._readChat,
   ) : super(const _Loading());
 
   final StreamChatListUsecase _streamChatList;
   final GetChatUsecase _getChat;
   final PostChatUsecase _postChat;
+  final NewChatUsecase _newChat;
+  final ReadChatUsecase _readChat;
 
   StreamSubscription? _chatListSubscription;
   StreamSubscription? _chatSubscription;
@@ -33,7 +37,6 @@ class ChatCubit extends Cubit<ChatState> {
         final chats = await getChat(list.id!);
         chatList.add(list.copyWith(chats: chats));
       }
-      print(chatList);
       emit(_Success(chatList));
     });
   }
@@ -61,6 +64,31 @@ class ChatCubit extends Cubit<ChatState> {
     }, (r) {
       emit(_Success(chatList));
     });
+  }
+
+  Future<void> newChat(String uid) async {
+    final response = await _newChat.call(uid);
+
+    response.fold(
+      (l) {
+        if (l is FirestoreFailure) {
+          emit(_Failure(l.code));
+        }
+      },
+      (r) {
+        emit(_Success(chatList));
+      },
+    );
+  }
+
+  Future<void> readChat(ChatList params) async {
+    final response = await _readChat.call(params);
+
+    response.fold((l) {
+      if (l is FirestoreFailure) {
+        emit(_Failure(l.code));
+      }
+    }, (r) {});
   }
 
   @override

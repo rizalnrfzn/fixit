@@ -19,7 +19,7 @@ class ChatList with _$ChatList {
 
   ChatList._();
 
-  ChatList toModel() => ChatList(
+  ChatListModel toModel() => ChatListModel(
         id: id,
         clientUid: clientUid,
         clientUnread: clientUnread,

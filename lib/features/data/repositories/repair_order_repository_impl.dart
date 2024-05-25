@@ -31,4 +31,54 @@ class RepairOrderRepositoryImpl implements RepairOrderRepository {
       (r) => Right(r.toEntity()),
     );
   }
+
+  @override
+  Future<Either<Failure, RepairOrder>> acceptRepair(RepairOrder params) async {
+    final response = await _datasource.acceptRepair(params);
+
+    return response.fold(
+      (l) => Left(l),
+      (r) => Right(r.toEntity()),
+    );
+  }
+
+  @override
+  Future<Either<Failure, RepairOrder>> rejectRepair(RepairOrder params) async {
+    final response = await _datasource.rejectRepair(params);
+
+    return response.fold(
+      (l) => Left(l),
+      (r) => Right(r.toEntity()),
+    );
+  }
+
+  @override
+  Future<Either<Failure, RepairOrder>> paymentOrder(RepairOrder params) async {
+    final response = await _datasource.paymentOrder(params);
+
+    return response.fold(
+      (l) => Left(l),
+      (r) => Right(r.toEntity()),
+    );
+  }
+
+  @override
+  Future<Either<Failure, RepairOrder>> review(PostReviewParams params) async {
+    final response = await _datasource.review(params);
+
+    return response.fold(
+      (l) => Left(l),
+      (r) => Right(r.toEntity()),
+    );
+  }
+
+  @override
+  Future<Either<Failure, RepairOrder>> cancelOrder(RepairOrder params) async {
+    final response = await _datasource.cancelOrder(params);
+
+    return response.fold(
+      (l) => Left(l),
+      (r) => Right(r.toEntity()),
+    );
+  }
 }

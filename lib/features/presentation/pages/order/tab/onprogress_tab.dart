@@ -10,7 +10,6 @@ class OnprogressTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> filterOnProgres = [
-      Status.beriUlasan.name,
       Status.pesananSelesai.name,
     ];
 

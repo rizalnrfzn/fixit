@@ -27,21 +27,18 @@ class TechnicianListTile extends StatelessWidget {
         child: Container(
           height: 165.w,
           decoration: BoxDecoration(
-            color: Theme.of(context)
-                .extension<MyAppColors>()!
-                .card!
-                .withOpacity(0.5),
+            color: Theme.of(context).extension<MyAppColors>()!.card,
             borderRadius: BorderRadius.circular(30.r),
           ),
           child: Row(
             children: [
               Padding(
-                padding: EdgeInsets.all(Dimens.space24),
+                padding: EdgeInsets.all(Dimens.space16),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(25.r),
                   child: Container(
-                    height: 117.w,
-                    width: 117.w,
+                    height: 134.w,
+                    width: 134.w,
                     color: Theme.of(context).hintColor.withOpacity(0.3),
                     child: CachedNetworkImage(
                         imageUrl: technician.profilePicture!),
@@ -49,8 +46,8 @@ class TechnicianListTile extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 117.w,
-                width: 191.w,
+                height: 134.w,
+                width: 207.w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -74,9 +71,16 @@ class TechnicianListTile extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
-                      technician.description!,
+                      '📍${technician.address}',
                       maxLines: 2,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    Text(
+                      '⤷${technician.description}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.labelSmall,
                     ),
                     const Spacer(),
                     Row(

@@ -12,7 +12,7 @@ class ProfilePicture extends StatelessWidget {
     this.border,
   });
 
-  final String pictureUrl;
+  final String? pictureUrl;
   final Function() onTap;
   final double radius;
   final double? border;
@@ -27,7 +27,8 @@ class ProfilePicture extends StatelessWidget {
         radius: border != null ? radius + border! : radius + Dimens.space4,
         child: CircleAvatar(
           backgroundColor: Theme.of(context).hintColor,
-          backgroundImage: CachedNetworkImageProvider(pictureUrl),
+          backgroundImage: CachedNetworkImageProvider(pictureUrl ??
+              'https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/no-profile-picture.png?alt=media&token=4704d7ed-e468-4cfd-9ffa-ef04b1efdf54'),
           radius: radius,
         ),
       ),

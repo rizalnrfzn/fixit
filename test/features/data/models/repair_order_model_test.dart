@@ -6,7 +6,7 @@ import 'package:latlong2/latlong.dart';
 
 Future<void> main() async {
   final repairOrderModel = RepairOrderModel(
-    canceled: false,
+    cancelled: false,
     checkingCost: 5000,
     clientAddress: "Mewek",
     clientLocation: const LatLng(-7.4453228, 109.2662425),
@@ -15,7 +15,7 @@ Future<void> main() async {
     dateTime: DateTime.parse("2024-01-08T09:29:40.315149"),
     distance: 39483,
     duration: 92738,
-    electronic: "Televisi",
+    electronicId: "Televisi",
     electronicPicture: [],
     gripe: ["keluhan televisi 1"],
     id: "bVCfX1rzV0bucLNFrQ4X",
@@ -26,6 +26,7 @@ Future<void> main() async {
     technicianLocation: const LatLng(-7.4453228, 109.2662425),
     technicianUid: "oR0HYrPbTfZMeKIRZjHw",
     totalCost: 55000,
+    reasonCancelled: 'tidak ada sparepart',
   );
 
   final instance = FakeFirebaseFirestore();
@@ -47,32 +48,34 @@ Future<void> main() async {
     // assert
     expect(model, equals(repairOrderModel));
   });
+
   test(
       'to firestore, should return a Map<String, dynamic> containing proper data',
       () {
     // arrange
     final repairOrderMap = {
-      'canceled': false,
+      'cancelled': false,
       'checkingCost': 5000,
       'clientAddress': "Mewek",
       'clientLocation': const GeoPoint(-7.4453228, 109.2662425),
       'clientUid': "yhlObRZToLQhfJoJzv1Aykcy7B93",
       'damage': [],
-      'dateTime': "2024-01-08T09:29:40.315149",
+      'dateTime':
+          Timestamp.fromDate(DateTime.parse('2024-01-08T09:29:40.315149')),
       'distance': 39483,
       'duration': 92738,
-      'electronic': "Televisi",
+      'electronicId': "Televisi",
       'electronicPicture': [],
       'gripe': ["keluhan televisi 1"],
       'id': "bVCfX1rzV0bucLNFrQ4X",
       'pay': false,
       'repair': false,
       'repairCost': 50000,
-      'route': [],
       'status': "onlie",
       'technicianLocation': const GeoPoint(-7.4453228, 109.2662425),
       'technicianUid': "oR0HYrPbTfZMeKIRZjHw",
       'totalCost': 55000,
+      'reasonCancelled': 'tidak ada sparepart',
     };
 
     // act

@@ -301,6 +301,96 @@ class MockRepairOrderRepository extends _i1.Mock
           ),
         )),
       ) as _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>> acceptRepair(
+          _i5.RepairOrder? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #acceptRepair,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>.value(
+            _FakeEither_0<_i7.Failure, _i5.RepairOrder>(
+          this,
+          Invocation.method(
+            #acceptRepair,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>> rejectRepair(
+          _i5.RepairOrder? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #rejectRepair,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>.value(
+            _FakeEither_0<_i7.Failure, _i5.RepairOrder>(
+          this,
+          Invocation.method(
+            #rejectRepair,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>> paymentOrder(
+          _i5.RepairOrder? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #paymentOrder,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>.value(
+            _FakeEither_0<_i7.Failure, _i5.RepairOrder>(
+          this,
+          Invocation.method(
+            #paymentOrder,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>> review(
+          _i5.PostReviewParams? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #review,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>.value(
+            _FakeEither_0<_i7.Failure, _i5.RepairOrder>(
+          this,
+          Invocation.method(
+            #review,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>);
+
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>> cancelOrder(
+          _i5.RepairOrder? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #cancelOrder,
+          [params],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>.value(
+            _FakeEither_0<_i7.Failure, _i5.RepairOrder>(
+          this,
+          Invocation.method(
+            #cancelOrder,
+            [params],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, _i5.RepairOrder>>);
 }
 
 /// A class which mocks [TechnicianRepository].

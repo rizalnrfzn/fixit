@@ -102,8 +102,8 @@ class OrderSummaryPage extends StatelessWidget {
                           .read<ElectronicCubit>()
                           .electronics
                           .firstWhere(
-                              (element) => element.id == order.electronic)
-                          .englishName!,
+                              (element) => element.id == order.electronicId)
+                          .name!,
                     ),
                     RowText(
                       left: Strings.of(context)!.technician,

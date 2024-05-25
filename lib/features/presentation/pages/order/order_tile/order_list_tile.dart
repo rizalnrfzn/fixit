@@ -100,25 +100,13 @@ class _OrderListTileState extends State<OrderListTile> {
                         BlocBuilder<ElectronicCubit, ElectronicState>(
                           builder: (context, state) {
                             return Text(
-                              (MainBoxMixin.mainBox
-                                                  ?.get(MainBoxKeys.locale.name)
-                                              as String? ??
-                                          'en') ==
-                                      'en'
-                                  ? context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id ==
-                                          widget.repairOrder.electronic)
-                                      .englishName!
-                                  : context
-                                      .read<ElectronicCubit>()
-                                      .electronics
-                                      .firstWhere((element) =>
-                                          element.id ==
-                                          widget.repairOrder.electronic)
-                                      .name!,
+                              context
+                                  .read<ElectronicCubit>()
+                                  .electronics
+                                  .firstWhere((element) =>
+                                      element.id ==
+                                      widget.repairOrder.electronicId)
+                                  .name!,
                               maxLines: 2,
                               style: Theme.of(context).textTheme.bodyMedium,
                             );
@@ -165,9 +153,11 @@ class _OrderListTileState extends State<OrderListTile> {
             if (isOpen)
               BlocBuilder<OrderCubit, OrderState>(
                 builder: (_, __) {
-                  context
-                      .read<OrderTileCubit>()
-                      .checkStatus(widget.repairOrder);
+                  context.read<OrderTileCubit>().checkStatus(
+                      widget.repairOrder,
+                      context.read<TechnicianCubit>().technicians.firstWhere(
+                          (element) =>
+                              element.uid == widget.repairOrder.technicianUid));
                   return BlocBuilder<OrderTileCubit, OrderTileState>(
                     builder: (_, state) {
                       return state.when(
@@ -178,7 +168,15 @@ class _OrderListTileState extends State<OrderListTile> {
                                 ),
                               ),
                           success: (index, direction) {
-                            if (index == 1) {
+                            if (index == 0) {
+                              return SizedBox(
+                                height: 100.h,
+                                child: const Center(
+                                  child: Text(
+                                      'Tunggu Teknisi mengonfirmasi pesanan Anda.'),
+                                ),
+                              );
+                            } else if (index == 1) {
                               return Padding(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: Dimens.space24,
@@ -191,12 +189,99 @@ class _OrderListTileState extends State<OrderListTile> {
                                   mapHeight: 350.h,
                                 ),
                               );
-                            } else {
+                            } else if (index == 2) {
                               return SizedBox(
-                                height: 400.h,
-                                child: Center(
-                                  child: Text('$index'),
+                                height: 100.h,
+                                child: const Center(
+                                  child: Text(
+                                      'Pengecekan elektronik oleh Teknisi.'),
                                 ),
+                              );
+                            } else if (index == 3) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: Dimens.space16),
+                                    child: RepairConfirmationContainer(
+                                        order: widget.repairOrder),
+                                  ),
+                                ],
+                              );
+                            } else if (index == 4) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                    height: 100.h,
+                                    child: const Center(
+                                      child: Text(
+                                          'Perbaikan elektronik oleh Teknisi.'),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            } else if (index == 5) {
+                              if (widget.repairOrder.pay ?? false) {
+                                return SizedBox(
+                                  height: 100.h,
+                                  child: const Center(
+                                    child: Text(
+                                        'Menunggu konfirmasi pembayaran oleh teknisi.'),
+                                  ),
+                                );
+                              } else {
+                                return Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: Dimens.space24,
+                                        vertical: Dimens.space12,
+                                      ),
+                                      child: PaymentContainer(
+                                          order: widget.repairOrder),
+                                    ),
+                                  ],
+                                );
+                              }
+                            } else if (index == 6) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: Dimens.space16,
+                                    ),
+                                    child: PostReviewContainer(
+                                        order: widget.repairOrder),
+                                  ),
+                                ],
+                              );
+                            } else if (index == 7) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                    height: 100.h,
+                                    child: const Center(
+                                      child: Text('Pesanan selesai.'),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  SizedBox(
+                                    height: 200.h,
+                                    child: Center(
+                                      child: Text('$index'),
+                                    ),
+                                  ),
+                                ],
                               );
                             }
                           },
@@ -208,9 +293,11 @@ class _OrderListTileState extends State<OrderListTile> {
             InkWell(
               onTap: () {
                 setState(() {
-                  context
-                      .read<OrderTileCubit>()
-                      .checkStatus(widget.repairOrder);
+                  context.read<OrderTileCubit>().checkStatus(
+                      widget.repairOrder,
+                      context.read<TechnicianCubit>().technicians.firstWhere(
+                          (element) =>
+                              element.uid == widget.repairOrder.technicianUid));
 
                   isOpen = !isOpen;
                 });

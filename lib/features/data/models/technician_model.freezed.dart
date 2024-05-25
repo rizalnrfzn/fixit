@@ -12,7 +12,7 @@ part of 'technician_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TechnicianModel _$TechnicianModelFromJson(Map<String, dynamic> json) {
   return _TechnicianModel.fromJson(json);
@@ -44,8 +44,8 @@ mixin _$TechnicianModel {
   LatLng? get currentLocation => throw _privateConstructorUsedError;
   @LatLngConverter()
   set currentLocation(LatLng? value) => throw _privateConstructorUsedError;
-  List<String>? get electronics => throw _privateConstructorUsedError;
-  set electronics(List<String>? value) => throw _privateConstructorUsedError;
+  List<String>? get electronicId => throw _privateConstructorUsedError;
+  set electronicId(List<String>? value) => throw _privateConstructorUsedError;
   bool? get isVerified => throw _privateConstructorUsedError;
   set isVerified(bool? value) => throw _privateConstructorUsedError;
   bool? get isOnline => throw _privateConstructorUsedError;
@@ -80,7 +80,7 @@ abstract class $TechnicianModelCopyWith<$Res> {
       String? address,
       @LatLngConverter() LatLng? location,
       @LatLngConverter() LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
@@ -111,7 +111,7 @@ class _$TechnicianModelCopyWithImpl<$Res, $Val extends TechnicianModel>
     Object? address = freezed,
     Object? location = freezed,
     Object? currentLocation = freezed,
-    Object? electronics = freezed,
+    Object? electronicId = freezed,
     Object? isVerified = freezed,
     Object? isOnline = freezed,
     Object? inOrder = freezed,
@@ -159,9 +159,9 @@ class _$TechnicianModelCopyWithImpl<$Res, $Val extends TechnicianModel>
           ? _value.currentLocation
           : currentLocation // ignore: cast_nullable_to_non_nullable
               as LatLng?,
-      electronics: freezed == electronics
-          ? _value.electronics
-          : electronics // ignore: cast_nullable_to_non_nullable
+      electronicId: freezed == electronicId
+          ? _value.electronicId
+          : electronicId // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       isVerified: freezed == isVerified
           ? _value.isVerified
@@ -206,7 +206,7 @@ abstract class _$$TechnicianModelImplCopyWith<$Res>
       String? address,
       @LatLngConverter() LatLng? location,
       @LatLngConverter() LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
@@ -235,7 +235,7 @@ class __$$TechnicianModelImplCopyWithImpl<$Res>
     Object? address = freezed,
     Object? location = freezed,
     Object? currentLocation = freezed,
-    Object? electronics = freezed,
+    Object? electronicId = freezed,
     Object? isVerified = freezed,
     Object? isOnline = freezed,
     Object? inOrder = freezed,
@@ -283,9 +283,9 @@ class __$$TechnicianModelImplCopyWithImpl<$Res>
           ? _value.currentLocation
           : currentLocation // ignore: cast_nullable_to_non_nullable
               as LatLng?,
-      electronics: freezed == electronics
-          ? _value.electronics
-          : electronics // ignore: cast_nullable_to_non_nullable
+      electronicId: freezed == electronicId
+          ? _value.electronicId
+          : electronicId // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       isVerified: freezed == isVerified
           ? _value.isVerified
@@ -325,7 +325,7 @@ class _$TechnicianModelImpl extends _TechnicianModel {
       this.address,
       @LatLngConverter() this.location,
       @LatLngConverter() this.currentLocation,
-      this.electronics,
+      this.electronicId,
       this.isVerified,
       this.isOnline,
       this.inOrder,
@@ -359,7 +359,7 @@ class _$TechnicianModelImpl extends _TechnicianModel {
   @LatLngConverter()
   LatLng? currentLocation;
   @override
-  List<String>? electronics;
+  List<String>? electronicId;
   @override
   bool? isVerified;
   @override
@@ -373,7 +373,7 @@ class _$TechnicianModelImpl extends _TechnicianModel {
 
   @override
   String toString() {
-    return 'TechnicianModel(uid: $uid, name: $name, email: $email, phoneNumber: $phoneNumber, description: $description, profilePicture: $profilePicture, images: $images, address: $address, location: $location, currentLocation: $currentLocation, electronics: $electronics, isVerified: $isVerified, isOnline: $isOnline, inOrder: $inOrder, rating: $rating, numberOfReviews: $numberOfReviews)';
+    return 'TechnicianModel(uid: $uid, name: $name, email: $email, phoneNumber: $phoneNumber, description: $description, profilePicture: $profilePicture, images: $images, address: $address, location: $location, currentLocation: $currentLocation, electronicId: $electronicId, isVerified: $isVerified, isOnline: $isOnline, inOrder: $inOrder, rating: $rating, numberOfReviews: $numberOfReviews)';
   }
 
   @JsonKey(ignore: true)
@@ -403,7 +403,7 @@ abstract class _TechnicianModel extends TechnicianModel {
       String? address,
       @LatLngConverter() LatLng? location,
       @LatLngConverter() LatLng? currentLocation,
-      List<String>? electronics,
+      List<String>? electronicId,
       bool? isVerified,
       bool? isOnline,
       bool? inOrder,
@@ -449,8 +449,8 @@ abstract class _TechnicianModel extends TechnicianModel {
   @LatLngConverter()
   set currentLocation(LatLng? value);
   @override
-  List<String>? get electronics;
-  set electronics(List<String>? value);
+  List<String>? get electronicId;
+  set electronicId(List<String>? value);
   @override
   bool? get isVerified;
   set isVerified(bool? value);
