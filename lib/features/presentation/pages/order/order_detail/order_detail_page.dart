@@ -1,5 +1,6 @@
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
+import 'package:fixit/features/presentation/pages/order/order_detail/widget/cancel_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,8 +38,11 @@ class _OrderDetailPageState extends State<OrderDetailPage>
     // final colorTheme = Theme.of(context).extension<MyAppColors>()!;
 
     return Parent(
-      appBar:
-          MyAppBar(context, title: Strings.of(context)!.orderDetails).call(),
+      appBar: MyAppBar(
+        context,
+        title: Strings.of(context)!.orderDetails,
+        action: CancelMenu(orderId: widget.orderId),
+      ).call(),
       child: BlocBuilder<OrderCubit, OrderState>(
         builder: (_, state) {
           return state.maybeWhen(
@@ -68,6 +72,7 @@ class _OrderDetailPageState extends State<OrderDetailPage>
                       labelPadding: const EdgeInsets.all(0),
                       indicatorWeight: 3,
                       unselectedLabelColor: Theme.of(context).hintColor,
+                      dividerColor: Colors.transparent,
                     ),
                     Expanded(
                       child: TabBarView(

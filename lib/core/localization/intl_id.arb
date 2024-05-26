@@ -89,5 +89,8 @@
   "canceled": "Dibatalkan",
   "orderDetails": "Detail Pesanan",
   "progres": "Proses",
-  "details": "Detail"
+  "details": "Detail",
+  "reject": "Tolak",
+  "rejectDesc": "Enter your reason for cancel this order",
+  "orderStatus": "Status Pesanan"
 }

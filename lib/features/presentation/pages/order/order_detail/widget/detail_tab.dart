@@ -30,9 +30,21 @@ class DetailTab extends StatelessWidget {
             child: Column(
               children: [
                 RowText(
-                  left: Strings.of(context)!.service,
-                  right: Strings.of(context)!.electronicRepair,
+                  left: Strings.of(context)!.orderStatus,
+                  right: order.cancelled == true
+                      ? 'Pesanan dibatalkan'
+                      : (MainBoxMixin.mainBox?.get(MainBoxKeys.locale.name)
+                                      as String? ??
+                                  'en') ==
+                              'en'
+                          ? getStatus(order.status!).englishText
+                          : getStatus(order.status!).text,
                 ),
+                if (order.cancelled == true && order.reasonCancelled != null)
+                  RowText(
+                    left: 'Alasan Pembatalan',
+                    right: order.reasonCancelled ?? '-',
+                  ),
                 RowText(
                   left: Strings.of(context)!.electronics,
                   right: context

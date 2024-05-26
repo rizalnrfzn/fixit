@@ -56,6 +56,7 @@ class _OrderPageState extends State<OrderPage>
                   indicatorWeight: 3,
                   physics: const NeverScrollableScrollPhysics(),
                   unselectedLabelColor: Theme.of(context).hintColor,
+                  dividerColor: Colors.transparent,
                 ),
                 Expanded(
                   child: TabBarView(

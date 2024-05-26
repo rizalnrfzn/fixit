@@ -142,44 +142,6 @@ class _OrderCanceledListTileState extends State<OrderCanceledListTile> {
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Dimens.space24,
-              ),
-              child: Divider(
-                  color: Theme.of(context).extension<MyAppColors>()!.shadow),
-            ),
-            if (isOpen)
-              const SizedBox(
-                height: 200,
-                child: Column(
-                  children: [],
-                ),
-              ),
-            InkWell(
-              onTap: () {
-                setState(() {
-                  isOpen = !isOpen;
-                });
-              },
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(30.r),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: Dimens.space6,
-                      bottom: Dimens.space12,
-                    ),
-                    child: isOpen
-                        ? const Icon(Icons.keyboard_arrow_up_rounded)
-                        : const Icon(Icons.keyboard_arrow_down_rounded),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
       ),

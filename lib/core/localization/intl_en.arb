@@ -89,5 +89,8 @@
   "canceled": "Canceled",
   "orderDetails": "Order Details",
   "progres": "Progres",
-  "details": "Details"
+  "details": "Details",
+  "reject": "Reject",
+  "rejectDesc": "Enter your reason for cancel this order",
+  "orderStatus": "Order Status"
 }

@@ -65,7 +65,7 @@ class TopBar extends StatelessWidget {
               ],
             ),
           ),
-          const ButtonNotification(),
+          // const ButtonNotification(),
         ],
       ),
     );

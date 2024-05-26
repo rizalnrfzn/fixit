@@ -273,4 +273,13 @@ class StringsId extends Strings {
 
   @override
   String get details => 'Detail';
+
+  @override
+  String get reject => 'Tolak';
+
+  @override
+  String get rejectDesc => 'Enter your reason for cancel this order';
+
+  @override
+  String get orderStatus => 'Status Pesanan';
 }

@@ -632,6 +632,24 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'Details'**
   String get details;
+
+  /// No description provided for @reject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get reject;
+
+  /// No description provided for @rejectDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your reason for cancel this order'**
+  String get rejectDesc;
+
+  /// No description provided for @orderStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Status'**
+  String get orderStatus;
 }
 
 class _StringsDelegate extends LocalizationsDelegate<Strings> {

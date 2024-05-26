@@ -273,4 +273,13 @@ class StringsEn extends Strings {
 
   @override
   String get details => 'Details';
+
+  @override
+  String get reject => 'Reject';
+
+  @override
+  String get rejectDesc => 'Enter your reason for cancel this order';
+
+  @override
+  String get orderStatus => 'Order Status';
 }

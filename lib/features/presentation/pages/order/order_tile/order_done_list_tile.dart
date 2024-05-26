@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
+import 'package:fixit/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -109,7 +110,13 @@ class OrderDoneListTile extends StatelessWidget {
                               vertical: Dimens.space4,
                             ),
                             child: Text(
-                              repairOrder.status!,
+                              (MainBoxMixin.mainBox
+                                                  ?.get(MainBoxKeys.locale.name)
+                                              as String? ??
+                                          'en') ==
+                                      'en'
+                                  ? getStatus(repairOrder.status!).englishText
+                                  : getStatus(repairOrder.status!).text,
                               style: textTheme.bodyMedium!
                                   .copyWith(color: Colors.white),
                             ),

@@ -22,7 +22,8 @@ class OnprogressTab extends StatelessWidget {
           stream: (orders) {
             return orders
                     .where((element) =>
-                        !(filterOnProgres.contains(element.status)))
+                        !(filterOnProgres.contains(element.status)) &&
+                        element.cancelled != true)
                     .isEmpty
                 ? const Center(
                     child: Text('Tidak ada order'),
