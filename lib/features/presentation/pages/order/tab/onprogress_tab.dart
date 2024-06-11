@@ -22,8 +22,8 @@ class OnprogressTab extends StatelessWidget {
           stream: (orders) {
             return orders
                     .where((element) =>
-                        !(filterOnProgres.contains(element.status)) &&
-                        element.cancelled != true)
+                        element.cancelled != true &&
+                        !(filterOnProgres.contains(element.status)))
                     .isEmpty
                 ? const Center(
                     child: Text('Tidak ada order'),
@@ -34,6 +34,7 @@ class OnprogressTab extends StatelessWidget {
                       children: List.generate(
                         orders
                             .where((element) =>
+                                element.cancelled != true &&
                                 !(filterOnProgres.contains(element.status)))
                             .length,
                         (index) => BlocProvider(
@@ -41,6 +42,7 @@ class OnprogressTab extends StatelessWidget {
                           child: OrderListTile(
                             repairOrder: orders
                                 .where((element) =>
+                                    element.cancelled != true &&
                                     !(filterOnProgres.contains(element.status)))
                                 .toList()[index],
                           ),

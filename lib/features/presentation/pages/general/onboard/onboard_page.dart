@@ -55,7 +55,7 @@ class _OnboardPageState extends State<OnboardPage> {
                     text: Strings.of(context)!.professionalService,
                   ),
                   OnboardContent(
-                    images: Images.icLauncher,
+                    images: Images.icLogo,
                     text: Strings.of(context)!.yourSatisfaction,
                   ),
                   OnboardContent(

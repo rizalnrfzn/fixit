@@ -19,14 +19,10 @@ class OnboardContent extends StatelessWidget {
         const Spacer(),
         Padding(
           padding: EdgeInsets.all(Dimens.space24),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-            ),
-            child: Image.asset(
-              images,
-              height: 400.h,
-            ),
+          child: Image.asset(
+            images,
+            height: 400.h,
+            color: Theme.of(context).extension<MyAppColors>()!.blue,
           ),
         ),
         Padding(

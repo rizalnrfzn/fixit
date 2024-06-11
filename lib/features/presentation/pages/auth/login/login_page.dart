@@ -16,8 +16,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   /// Controller
-  final _conEmail = TextEditingController(text: 'levelsekawan@gmail.com');
-  final _conPassword = TextEditingController(text: 'coba123');
+  final _conEmail = TextEditingController();
+  final _conPassword = TextEditingController();
 
   /// Focus Node
   final _fnEmail = FocusNode();
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                                 : null)
                             : null,
                       ),
-                      BlocBuilder<AuthCubit, AuthState>(
+                      BlocBuilder<LoginCubit, LoginState>(
                         builder: (_, state) {
                           return TextF(
                             autofillHints: const [AutofillHints.password],

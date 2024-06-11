@@ -26,9 +26,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       child: ColoredBox(
         color: Theme.of(context).extension<MyAppColors>()!.background!,
         child: Center(
-          child: Image.asset(Images.icLogo,
-              width: 350.w,
-              color: Theme.of(context).extension<MyAppColors>()!.blue),
+          child: Image.asset(
+            Images.icLogo,
+            width: 350.w,
+            color: Theme.of(context).extension<MyAppColors>()!.blue,
+          ),
         ),
       ),
     );

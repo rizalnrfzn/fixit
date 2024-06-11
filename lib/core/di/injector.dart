@@ -1,6 +1,5 @@
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
-import 'package:fixit/features/presentation/cubits/banner_cubit/banner_cubit.dart';
 import 'package:fixit/utils/utils.dart';
 import 'package:get_it/get_it.dart';
 

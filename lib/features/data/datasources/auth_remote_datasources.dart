@@ -126,6 +126,8 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
         uid: account.user!.uid,
         email: params.email,
         isRegistered: false,
+        profilePicture:
+            'https://firebasestorage.googleapis.com/v0/b/fixit-1c96e.appspot.com/o/no-profile-picture.png?alt=media&token=4704d7ed-e468-4cfd-9ffa-ef04b1efdf54',
       );
 
       await _collRef.doc(account.user!.uid).set(data);

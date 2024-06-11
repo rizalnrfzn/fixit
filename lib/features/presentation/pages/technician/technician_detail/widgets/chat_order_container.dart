@@ -77,8 +77,6 @@ class ChatOrderContainer extends StatelessWidget {
                         .read<ChatCubit>()
                         .chatList
                         .firstWhere((element) => element.technicianUid == uid);
-                    print(chat.id);
-                    print(technician);
                     context.push(
                       Routes.roomChat.path,
                       extra: {
