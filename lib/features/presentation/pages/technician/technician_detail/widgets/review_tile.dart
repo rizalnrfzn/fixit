@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
+import 'package:fixit/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,7 +44,7 @@ class ReviewTile extends StatelessWidget {
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    review.dateTime.toString(),
+                    toDateTime(review.dateTime!),
                     style: textTheme.labelSmall,
                   ),
                 ],
@@ -80,6 +82,37 @@ class ReviewTile extends StatelessWidget {
           ),
           SizedBox(height: Dimens.space4),
           Text('${review.review}'),
+          if (review.images != null && review.images!.isNotEmpty)
+            Container(
+              padding: EdgeInsets.all(Dimens.space8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r),
+              ),
+              child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 3,
+                shrinkWrap: true,
+                mainAxisSpacing: Dimens.space8,
+                crossAxisSpacing: Dimens.space8,
+                children: [
+                  for (final image in review.images!)
+                    Container(
+                      padding: EdgeInsets.all(Dimens.space4),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.r),
+                        color: Theme.of(context).extension<MyAppColors>()!.card,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.r),
+                        child: CachedNetworkImage(
+                          imageUrl: image,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
         ],
       ),
     );

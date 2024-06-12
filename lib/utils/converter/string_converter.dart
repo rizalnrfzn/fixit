@@ -13,7 +13,7 @@ String toMinute(double duration) {
 }
 
 String toDateTime(DateTime date) {
-  return DateFormat('hh:mm\ndd-MM-yyyy').format(date.toLocal()).toString();
+  return DateFormat('dd-MM-yyyy | hh:mm').format(date.toLocal()).toString();
 }
 
 String toThousand(int number) {

@@ -64,7 +64,7 @@ class _ReviewPageState extends State<ReviewPage> {
                                     Icon(
                                       Icons.star,
                                       color: selectedStar == index
-                                          ? textTheme.bodyMedium!.color
+                                          ? Palette.background
                                           : colorTheme.blue,
                                       size: Dimens.space20,
                                     ),
@@ -76,7 +76,7 @@ class _ReviewPageState extends State<ReviewPage> {
                                       style: textTheme.bodyMedium!.copyWith(
                                         fontWeight: FontWeight.bold,
                                         color: selectedStar == index
-                                            ? textTheme.bodyMedium!.color
+                                            ? Palette.background
                                             : colorTheme.blue,
                                       ),
                                     ),

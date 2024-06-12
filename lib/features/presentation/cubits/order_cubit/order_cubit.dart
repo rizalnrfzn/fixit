@@ -33,9 +33,7 @@ class OrderCubit extends Cubit<OrderState> {
     _ordersSubscription?.cancel();
     _ordersSubscription = _stremOrders.call(uid).listen((event) {
       orders = event;
-      orders.sort(
-        (a, b) => a.dateTime!.compareTo(b.dateTime!),
-      );
+
       emit(_Stream(orders));
     });
   }

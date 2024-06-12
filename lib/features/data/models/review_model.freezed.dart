@@ -25,6 +25,7 @@ mixin _$ReviewModel {
   int? get rating => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime? get dateTime => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +43,8 @@ abstract class $ReviewModelCopyWith<$Res> {
       {String? clientUid,
       String? review,
       int? rating,
-      @TimestampConverter() DateTime? dateTime});
+      @TimestampConverter() DateTime? dateTime,
+      List<String>? images});
 }
 
 /// @nodoc
@@ -62,6 +64,7 @@ class _$ReviewModelCopyWithImpl<$Res, $Val extends ReviewModel>
     Object? review = freezed,
     Object? rating = freezed,
     Object? dateTime = freezed,
+    Object? images = freezed,
   }) {
     return _then(_value.copyWith(
       clientUid: freezed == clientUid
@@ -80,6 +83,10 @@ class _$ReviewModelCopyWithImpl<$Res, $Val extends ReviewModel>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -96,7 +103,8 @@ abstract class _$$ReviewModelImplCopyWith<$Res>
       {String? clientUid,
       String? review,
       int? rating,
-      @TimestampConverter() DateTime? dateTime});
+      @TimestampConverter() DateTime? dateTime,
+      List<String>? images});
 }
 
 /// @nodoc
@@ -114,6 +122,7 @@ class __$$ReviewModelImplCopyWithImpl<$Res>
     Object? review = freezed,
     Object? rating = freezed,
     Object? dateTime = freezed,
+    Object? images = freezed,
   }) {
     return _then(_$ReviewModelImpl(
       clientUid: freezed == clientUid
@@ -132,6 +141,10 @@ class __$$ReviewModelImplCopyWithImpl<$Res>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -143,8 +156,10 @@ class _$ReviewModelImpl extends _ReviewModel {
       {this.clientUid,
       this.review,
       this.rating,
-      @TimestampConverter() this.dateTime})
-      : super._();
+      @TimestampConverter() this.dateTime,
+      final List<String>? images})
+      : _images = images,
+        super._();
 
   factory _$ReviewModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReviewModelImplFromJson(json);
@@ -158,10 +173,19 @@ class _$ReviewModelImpl extends _ReviewModel {
   @override
   @TimestampConverter()
   final DateTime? dateTime;
+  final List<String>? _images;
+  @override
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ReviewModel(clientUid: $clientUid, review: $review, rating: $rating, dateTime: $dateTime)';
+    return 'ReviewModel(clientUid: $clientUid, review: $review, rating: $rating, dateTime: $dateTime, images: $images)';
   }
 
   @override
@@ -174,13 +198,14 @@ class _$ReviewModelImpl extends _ReviewModel {
             (identical(other.review, review) || other.review == review) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.dateTime, dateTime) ||
-                other.dateTime == dateTime));
+                other.dateTime == dateTime) &&
+            const DeepCollectionEquality().equals(other._images, _images));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, clientUid, review, rating, dateTime);
+  int get hashCode => Object.hash(runtimeType, clientUid, review, rating,
+      dateTime, const DeepCollectionEquality().hash(_images));
 
   @JsonKey(ignore: true)
   @override
@@ -201,7 +226,8 @@ abstract class _ReviewModel extends ReviewModel {
       {final String? clientUid,
       final String? review,
       final int? rating,
-      @TimestampConverter() final DateTime? dateTime}) = _$ReviewModelImpl;
+      @TimestampConverter() final DateTime? dateTime,
+      final List<String>? images}) = _$ReviewModelImpl;
   _ReviewModel._() : super._();
 
   factory _ReviewModel.fromJson(Map<String, dynamic> json) =
@@ -216,6 +242,8 @@ abstract class _ReviewModel extends ReviewModel {
   @override
   @TimestampConverter()
   DateTime? get dateTime;
+  @override
+  List<String>? get images;
   @override
   @JsonKey(ignore: true)
   _$$ReviewModelImplCopyWith<_$ReviewModelImpl> get copyWith =>

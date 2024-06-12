@@ -1,5 +1,6 @@
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
+import 'package:fixit/features/presentation/pages/order/order_step/cubit/post_review_cubit.dart';
 import 'package:fixit/utils/utils.dart';
 import 'package:get_it/get_it.dart';
 
@@ -164,6 +165,7 @@ void _cubit() {
   sl.registerFactory(() => OrderSummaryCubit(sl()));
   sl.registerFactory(() => OrderDetailCubit(sl()));
   sl.registerFactory(() => OrderTileCubit(sl()));
+  sl.registerFactory(() => PostReviewCubit());
 
   sl.registerFactory(() => BannerCubit(sl()));
 }

@@ -13,6 +13,8 @@ _$ReviewModelImpl _$$ReviewModelImplFromJson(Map<String, dynamic> json) =>
       rating: json['rating'] as int?,
       dateTime: _$JsonConverterFromJson<Timestamp, DateTime>(
           json['dateTime'], const TimestampConverter().fromJson),
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$ReviewModelImplToJson(_$ReviewModelImpl instance) =>
@@ -22,6 +24,7 @@ Map<String, dynamic> _$$ReviewModelImplToJson(_$ReviewModelImpl instance) =>
       'rating': instance.rating,
       'dateTime': _$JsonConverterToJson<Timestamp, DateTime>(
           instance.dateTime, const TimestampConverter().toJson),
+      'images': instance.images,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

@@ -12,6 +12,7 @@ class Review with _$Review {
     String? review,
     int? rating,
     DateTime? dateTime,
+    List<String>? images,
   }) = _Review;
 
   Review._();
@@ -21,5 +22,6 @@ class Review with _$Review {
         review: review,
         rating: rating,
         dateTime: dateTime,
+        images: images,
       );
 }

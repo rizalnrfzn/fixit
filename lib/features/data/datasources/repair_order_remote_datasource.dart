@@ -173,8 +173,9 @@ class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
   Future<Either<Failure, RepairOrderModel>> review(
       PostReviewParams params) async {
     try {
+      final listImagesString = [];
       final review = params.review.toModel();
-      await firebase
+      final reviewDoc = await firebase
           .collection('technician')
           .doc(params.order.technicianUid)
           .collection('review')
@@ -189,6 +190,29 @@ class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
             toFirestore: ReviewModel.toFirestore,
           )
           .get();
+
+      if (params.files.isNotEmpty) {
+        for (var i = 0; i < params.files.length; i++) {
+          await _storage
+              .child(
+                  '/technician/${params.order.technicianUid}/${reviewDoc.id}$i.png')
+              .putFile(params.files[i]);
+
+          String url = await _storage
+              .child(
+                  '/technician/${params.order.technicianUid}/${reviewDoc.id}$i.png')
+              .getDownloadURL();
+
+          listImagesString.add(url);
+        }
+      }
+
+      await firebase
+          .collection('technician')
+          .doc(params.order.technicianUid)
+          .collection('review')
+          .doc(reviewDoc.id)
+          .update({'images': listImagesString});
 
       final allReview = allReviewQuery.docs.map((e) => e.data()).toList();
 

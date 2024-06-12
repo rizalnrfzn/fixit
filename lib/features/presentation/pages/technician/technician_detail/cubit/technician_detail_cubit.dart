@@ -34,6 +34,7 @@ class TechnicianDetailCubit extends Cubit<TechnicianDetailState> {
             clientName: client?.name, clientPicture: client?.profilePicture));
       }
       reviews = reviewsNew;
+
       emit(_ReviewStream(reviews));
     });
   }

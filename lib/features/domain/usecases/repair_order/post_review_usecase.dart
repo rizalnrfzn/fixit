@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:fixit/core/core.dart';
 import 'package:fixit/features/features.dart';
@@ -16,10 +18,12 @@ class PostReviewParams {
   final RepairOrder order;
   final Review review;
   final Technician technician;
+  final List<File> files;
 
   PostReviewParams({
     required this.order,
     required this.review,
     required this.technician,
+    required this.files,
   });
 }

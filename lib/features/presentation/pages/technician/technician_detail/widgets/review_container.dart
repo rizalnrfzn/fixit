@@ -26,11 +26,6 @@ class _ReviewContainerState extends State<ReviewContainer> {
           loading: () => const Center(child: Loading()),
           failure: (message) => Center(child: Empty(errorMessage: message)),
           reviewStream: (reviews) {
-            List<Review> sortedReview = [];
-            sortedReview.addAll(reviews);
-            sortedReview.sort(
-              (a, b) => a.dateTime!.compareTo(b.dateTime!),
-            );
             return Column(
               children: [
                 SizedBox(
@@ -80,7 +75,7 @@ class _ReviewContainerState extends State<ReviewContainer> {
                             setState(() {
                               selectedStar = index;
                               if (selectedStar != 0) {
-                                listReview = sortedReview
+                                listReview = reviews
                                     .where((element) => element.rating == index)
                                     .toList();
                               }
@@ -93,7 +88,7 @@ class _ReviewContainerState extends State<ReviewContainer> {
                 ),
                 SpacerV(value: Dimens.space8),
                 selectedStar == 0
-                    ? sortedReview.isEmpty
+                    ? reviews.isEmpty
                         ? SizedBox(
                             height: 100,
                             child: Center(
@@ -102,9 +97,8 @@ class _ReviewContainerState extends State<ReviewContainer> {
                           )
                         : Column(
                             children: List.generate(
-                              sortedReview.length > 5 ? 5 : sortedReview.length,
-                              (index) =>
-                                  ReviewTile(review: sortedReview[index]),
+                              reviews.length > 5 ? 5 : reviews.length,
+                              (index) => ReviewTile(review: reviews[index]),
                             ),
                           )
                     : listReview.isEmpty

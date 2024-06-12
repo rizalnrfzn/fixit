@@ -13,6 +13,7 @@ class ReviewModel with _$ReviewModel {
     String? review,
     int? rating,
     @TimestampConverter() DateTime? dateTime,
+    List<String>? images,
   }) = _ReviewModel;
 
   ReviewModel._();
@@ -33,5 +34,6 @@ class ReviewModel with _$ReviewModel {
         review: review,
         rating: rating,
         dateTime: dateTime,
+        images: images,
       );
 }
