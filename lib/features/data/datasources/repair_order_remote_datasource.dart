@@ -191,16 +191,18 @@ class RepairOrderRemoteDatasourceImpl implements RepairOrderRemoteDatasource {
           )
           .get();
 
+      final storage = FirebaseStorage.instance.ref('technician');
+
       if (params.files.isNotEmpty) {
         for (var i = 0; i < params.files.length; i++) {
-          await _storage
+          await storage
               .child(
-                  '/technician/${params.order.technicianUid}/${reviewDoc.id}$i.png')
+                  '/${params.order.technicianUid}/review/${reviewDoc.id}$i.png')
               .putFile(params.files[i]);
 
-          String url = await _storage
+          String url = await storage
               .child(
-                  '/technician/${params.order.technicianUid}/${reviewDoc.id}$i.png')
+                  '/${params.order.technicianUid}/review/${reviewDoc.id}$i.png')
               .getDownloadURL();
 
           listImagesString.add(url);
